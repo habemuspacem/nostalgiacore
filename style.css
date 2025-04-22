@@ -1,91 +1,120 @@
-/* Reset base */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 body {
-  font-family: 'Courier New', monospace;
-  background-color: #0d0d0d;
+  margin: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #000;
   color: white;
-  overflow-x: hidden;
 }
 
-h1 {
+header {
   text-align: center;
-  font-size: 2.2rem;
-  margin: 2rem 0;
-  color: #c0ffee;
-  text-shadow: 0 0 5px #c0ffee;
+  margin-bottom: 20px;
 }
 
-/* TRACK SECTIONS */
-
-.track-section {
-  position: relative;
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.overlay {
-  background-color: rgba(0, 0, 0, 0.55);
-  padding: 2rem;
+.copertina {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
   border-radius: 10px;
-  text-align: center;
-  width: 90%;
+}
+
+.tracklist {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 20px;
+}
+
+.track {
+  display: flex;
+  flex-direction: column;
+  background-color: #111;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.track img {
+  width: 100%;
   max-width: 400px;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
-.track-section h2 {
-  font-size: 1.8rem;
-  margin-bottom: 1rem;
-  letter-spacing: 2px;
+.track .info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.track-section button {
-  font-size: 1.5rem;
-  background-color: transparent;
-  border: 2px solid white;
+.track h3 {
+  font-size: 1.2em;
+  margin: 0;
+  text-transform: uppercase;
+  font-family: 'Courier New', monospace;
+}
+
+audio {
+  width: 100%;
+  max-width: 300px;
+}
+
+.elemento {
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+/* Sezione Mondo Nostalgiacore */
+
+#mondo-nostalgiacore {
+  padding: 40px 20px;
+  background-color: #111;
   color: white;
-  padding: 0.5rem 1rem;
-  margin: 1rem 0;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  text-align: center;
 }
 
-.track-section button:hover {
-  background-color: white;
-  color: #0d0d0d;
+#mondo-nostalgiacore h2 {
+  margin-bottom: 20px;
+  font-size: 1.5em;
+  letter-spacing: 1px;
 }
 
-.track-section p {
-  font-size: 2rem;
-  margin-top: 0.5rem;
+.carousel-container {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  gap: 10px;
+  padding: 20px 0;
 }
 
-/* RESPONSIVE */
+.carousel-track {
+  display: flex;
+  gap: 10px;
+  scroll-behavior: smooth;
+}
 
+.carousel-track img {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  width: 300px;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+}
+
+.carousel-track img:hover {
+  transform: scale(1.05);
+  cursor: grab;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
-  .overlay {
-    padding: 1.5rem;
+  .track {
+    padding: 10px;
   }
 
-  .track-section h2 {
-    font-size: 1.5rem;
-  }
-
-  .track-section button {
-    font-size: 1.2rem;
-    padding: 0.4rem 0.8rem;
-  }
-
-  .track-section p {
-    font-size: 1.6rem;
+  .carousel-track img {
+    width: 250px;
   }
 }

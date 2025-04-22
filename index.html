@@ -1,59 +1,69 @@
 <!DOCTYPE html>
 <html lang="it">
-<head><link rel="stylesheet" href="style.css">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>nostalgiacore</title>
+  <link rel="stylesheet" href="style.css">
   <style>
     body {
       margin: 0;
       font-family: 'Courier New', monospace;
-      background: #d2e3dd;
-      background-image: url('https://your-image-link.png'); /* Sostituire con sfondo reale */
+      background-color: #000;
+      color: white;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin: 2rem 0;
+    }
+
+    .track-section {
+      position: relative;
       background-size: cover;
       background-position: center;
-      color: white;
-      text-align: center;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .overlay {
+      background-color: rgba(0, 0, 0, 0.6);
       padding: 2rem;
+      border-radius: 10px;
+      text-align: center;
     }
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
+
+    .overlay h2 {
+      margin: 0 0 1rem;
+      font-size: 2rem;
     }
-    .track {
-      font-size: 1.8rem;
-      margin: 1rem 0;
+
+    .overlay button {
+      font-size: 1.5rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      margin-bottom: 1rem;
     }
-    .icon {
-      margin-right: 0.5rem;
+
+    .overlay p {
+      font-size: 2rem;
+      margin: 0;
     }
   </style>
 </head>
 <body>
-  <h1>www.nostalgiacore.it</h1>
 
-  <div class="track"><span class="icon">❄️</span> ANTARTIDE ▶</div>
-  <div class="track"><span class="icon">☎️</span> INTRO ▶</div>
-  <div class="track"><span class="icon">🌴</span> PENOMBRA ▶</div>
-  <div class="track"><span class="icon">⚡</span> GUAI ▶</div>
-  <div class="track"><span class="icon">🧷</span> ORECCHINI ▶</div>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8">
-  <title>nostalgiacore.net</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
+  <h1>www.nostalgiacore.net</h1>
 
   <section class="track-section" style="background-image: url('images/Intro.PNG.PNG');">
     <div class="overlay">
       <h2>INTRO</h2>
       <button onclick="togglePlay('intro-audio')">▶</button>
       <p>📱</p>
-      <audio id="intro-audio" src="audio/INTRO - mix 01.wav"></audio>
+      <audio id="intro-audio" src="audio/INTRO - mix 01.mp3"></audio>
     </div>
   </section>
 
@@ -62,7 +72,7 @@
       <h2>PENOMBRA</h2>
       <button onclick="togglePlay('penombra-audio')">▶</button>
       <p>🌴</p>
-      <audio id="penombra-audio" src="audio/PENOMBRA - mix 01.wav"></audio>
+      <audio id="penombra-audio" src="audio/PENOMBRA - mix 01.mp3"></audio>
     </div>
   </section>
 
@@ -71,7 +81,7 @@
       <h2>GUAI</h2>
       <button onclick="togglePlay('guai-audio')">▶</button>
       <p>⚡️</p>
-      <audio id="guai-audio" src="audio/GUAI - mix 01.wav"></audio>
+      <audio id="guai-audio" src="audio/GUAI - mix 01.mp3"></audio>
     </div>
   </section>
 
@@ -80,7 +90,7 @@
       <h2>ORECCHINI</h2>
       <button onclick="togglePlay('orecchini-audio')">▶</button>
       <p>●●</p>
-      <audio id="orecchini-audio" src="audio/ORECCHINI - mix 01.wav"></audio>
+      <audio id="orecchini-audio" src="audio/ORECCHINI - mix 01.mp3"></audio>
     </div>
   </section>
 
@@ -89,7 +99,7 @@
       <h2>ANTARTIDE</h2>
       <button onclick="togglePlay('antartide-audio')">▶</button>
       <p>◼︎</p>
-      <audio id="antartide-audio" src="audio/ANTARTIDE - mix 01.wav"></audio>
+      <audio id="antartide-audio" src="audio/ANTARTIDE - mix 01.mp3"></audio>
     </div>
   </section>
 

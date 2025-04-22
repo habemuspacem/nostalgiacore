@@ -1,82 +1,87 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <title>nostalgiacore.net</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nostalgiacore</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
   <header>
-    <h1>nostalgiacore.net</h1>
+    <img src="img/copertina.jpg" alt="Copertina Album" class="copertina" />
   </header>
 
   <main>
-    <section class="track-section" style="background-image: url('images/Intro.PNG.PNG');">
-      <div class="overlay">
-        <h2>INTRO</h2>
-        <button onclick="togglePlay('intro-audio')">▶</button>
-        <p>📱</p>
-        <audio id="intro-audio" src="audio/INTRO - mix 01 - CUT.mp3"></audio>
+    <section class="tracklist">
+      <div class="track">
+        <img src="img/antartide.jpg" alt="Antartide">
+        <div class="info">
+          <h3>1. Antartide</h3>
+          <audio controls>
+            <source src="audio/ANTARTIDE-snippet.wav" type="audio/wav" />
+          </audio>
+          <span class="elemento">Lastra di ghiaccio / Porta</span>
+        </div>
+      </div>
+
+      <div class="track">
+        <img src="img/intro.jpg" alt="Intro">
+        <div class="info">
+          <h3>2. intro</h3>
+          <audio controls>
+            <source src="audio/INTRO-snippet.wav" type="audio/wav" />
+          </audio>
+          <span class="elemento">Telefono in carica</span>
+        </div>
+      </div>
+
+      <div class="track">
+        <img src="img/penombra.jpg" alt="Penombra">
+        <div class="info">
+          <h3>3. Penombra</h3>
+          <audio controls>
+            <source src="audio/PENOMBRA-snippet.wav" type="audio/wav" />
+          </audio>
+          <span class="elemento">Palma</span>
+        </div>
+      </div>
+
+      <div class="track">
+        <img src="img/guai.jpg" alt="Guai">
+        <div class="info">
+          <h3>4. Guai</h3>
+          <audio controls>
+            <source src="audio/GUAI-snippet.wav" type="audio/wav" />
+          </audio>
+          <span class="elemento">Crepe</span>
+        </div>
+      </div>
+
+      <div class="track">
+        <img src="img/penombra.jpg" alt="Penombra">
+        <div class="info">
+          <h3>5. Penombra</h3>
+          <audio controls>
+            <source src="audio/PENOMBRA-snippet.wav" type="audio/wav" />
+          </audio>
+          <span class="elemento">Palma</span>
+        </div>
       </div>
     </section>
 
-    <section class="track-section" style="background-image: url('images/Penombra.PNG.PNG');">
-      <div class="overlay">
-        <h2>PENOMBRA</h2>
-        <button onclick="togglePlay('penombra-audio')">▶</button>
-        <p>🌴</p>
-        <audio id="penombra-audio" src="audio/PENOMBRA - mix 01 - CUT.mp3"></audio>
-      </div>
-    </section>
-
-    <section class="track-section" style="background-image: url('images/Guai.PNG.PNG');">
-      <div class="overlay">
-        <h2>GUAI</h2>
-        <button onclick="togglePlay('guai-audio')">▶</button>
-        <p>⚡️</p>
-        <audio id="guai-audio" src="audio/GUAI - mix 01 - CUT.mp3"></audio>
-      </div>
-    </section>
-
-    <section class="track-section" style="background-image: url('images/Orecchini.PNG.PNG');">
-      <div class="overlay">
-        <h2>ORECCHINI</h2>
-        <button onclick="togglePlay('orecchini-audio')">▶</button>
-        <p>●●</p>
-        <audio id="orecchini-audio" src="audio/ORECCHINI - mix 01 - CUT.mp3"></audio>
-      </div>
-    </section>
-
-    <section class="track-section" style="background-image: url('images/Antartide.PNG.PNG');">
-      <div class="overlay">
-        <h2>ANTARTIDE</h2>
-        <button onclick="togglePlay('antartide-audio')">▶</button>
-        <p>◼︎</p>
-        <audio id="antartide-audio" src="audio/ANTARTIDE - mix 01 - CUT.mp3"></audio>
+    <section id="mondo-nostalgiacore">
+      <h2>Mondo Nostalgiacore</h2>
+      <div class="carousel-container">
+        <div class="carousel-track">
+          <img src="img/5213E676.jpeg" alt="img1">
+          <img src="img/49ACE28F.jpeg" alt="img2">
+          <img src="img/B8E991AF.jpeg" alt="img3">
+          <img src="img/0A11359E.jpeg" alt="img4">
+          <img src="img/A3260B99.jpeg" alt="img5">
+          <img src="img/78DF8F85.jpeg" alt="img6">
+        </div>
       </div>
     </section>
   </main>
-
-  <script>
-    function togglePlay(id) {
-      const audios = document.querySelectorAll("audio");
-      audios.forEach(audio => {
-        if (audio.id !== id) {
-          audio.pause();
-          audio.currentTime = 0;
-        }
-      });
-
-      const audio = document.getElementById(id);
-      if (audio.paused) {
-        audio.play();
-      } else {
-        audio.pause();
-      }
-    }
-  </script>
-
 </body>
 </html>

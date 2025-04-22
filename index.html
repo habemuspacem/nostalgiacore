@@ -39,63 +39,78 @@
   <div class="track"><span class="icon">🧷</span> ORECCHINI ▶</div>
 </body>
 </html>
-<section class="track" id="antartide">
-  <div class="track-bg" style="background-image: url('Antartide.PNG.PNG');"></div>
-  <div class="track-content">
-    <h2 class="track-title">ANTARTIDE</h2>
-    <button class="play-button" onclick="togglePlay('antartide-audio')">▶</button>
-    <audio id="antartide-audio" src="ANTARTIDE - mix 01.wav"></audio>
-    <div class="track-element">🧊</div> <!-- Lastra di ghiaccio/porta -->
-  </div>
-</section>
-<script>
-  function togglePlay(id) {
-    const audio = document.getElementById(id);
-    if (audio.paused) {
-      audio.currentTime = 0;
-      audio.play();
-    } else {
-      audio.pause();
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>nostalgiacore.net</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <section class="track-section" style="background-image: url('images/Intro.PNG.PNG');">
+    <div class="overlay">
+      <h2>INTRO</h2>
+      <button onclick="togglePlay('intro-audio')">▶</button>
+      <p>📱</p>
+      <audio id="intro-audio" src="audio/INTRO - mix 01.wav"></audio>
+    </div>
+  </section>
+
+  <section class="track-section" style="background-image: url('images/Penombra.PNG.PNG');">
+    <div class="overlay">
+      <h2>PENOMBRA</h2>
+      <button onclick="togglePlay('penombra-audio')">▶</button>
+      <p>🌴</p>
+      <audio id="penombra-audio" src="audio/PENOMBRA - mix 01.wav"></audio>
+    </div>
+  </section>
+
+  <section class="track-section" style="background-image: url('images/Guai.PNG.PNG');">
+    <div class="overlay">
+      <h2>GUAI</h2>
+      <button onclick="togglePlay('guai-audio')">▶</button>
+      <p>⚡️</p>
+      <audio id="guai-audio" src="audio/GUAI - mix 01.wav"></audio>
+    </div>
+  </section>
+
+  <section class="track-section" style="background-image: url('images/Orecchini.PNG.PNG');">
+    <div class="overlay">
+      <h2>ORECCHINI</h2>
+      <button onclick="togglePlay('orecchini-audio')">▶</button>
+      <p>●●</p>
+      <audio id="orecchini-audio" src="audio/ORECCHINI - mix 01.wav"></audio>
+    </div>
+  </section>
+
+  <section class="track-section" style="background-image: url('images/Antartide.PNG.PNG');">
+    <div class="overlay">
+      <h2>ANTARTIDE</h2>
+      <button onclick="togglePlay('antartide-audio')">▶</button>
+      <p>◼︎</p>
+      <audio id="antartide-audio" src="audio/ANTARTIDE - mix 01.wav"></audio>
+    </div>
+  </section>
+
+  <script>
+    function togglePlay(id) {
+      const audios = document.querySelectorAll("audio");
+      audios.forEach(audio => {
+        if (audio.id !== id) {
+          audio.pause();
+          audio.currentTime = 0;
+        }
+      });
+
+      const audio = document.getElementById(id);
+      if (audio.paused) {
+        audio.play();
+      } else {
+        audio.pause();
+      }
     }
-  }
-</script>
-<section class="track-section" style="background-image: url('Intro.PNG.PNG');">
-  <div class="overlay">
-    <h2>INTRO</h2>
-    <button onclick="togglePlay('intro-audio')">▶</button>
-    <p>📱</p> <!-- Telefono in carica -->
-    <audio id="intro-audio" src="INTRO - mix 01.wav"></audio>
-  </div>
-</section>
-<section class="track-section" style="background-image: url('Penombra.PNG.PNG');">
-  <div class="overlay">
-    <h2>PENOMBRA</h2>
-    <button onclick="togglePlay('penombra-audio')">▶</button>
-    <p>🌴</p> <!-- Palma -->
-    <audio id="penombra-audio" src="PENOMBRA - mix 01.wav"></audio>
-  </div>
-</section>
-<section class="track-section" style="background-image: url('Guai.PNG.PNG');">
-  <div class="overlay">
-    <h2>GUAI</h2>
-    <button onclick="togglePlay('guai-audio')">▶</button>
-    <p>⚡️</p> <!-- Crepe -->
-    <audio id="guai-audio" src="GUAI - mix 01.wav"></audio>
-  </div>
-</section>
-<section class="track-section" style="background-image: url('Orecchini.PNG.PNG');">
-  <div class="overlay">
-    <h2>ORECCHINI</h2>
-    <button onclick="togglePlay('orecchini-audio')">▶</button>
-    <p>●●</p> <!-- Orecchini di perle -->
-    <audio id="orecchini-audio" src="ORECCHINI - mix 01.wav"></audio>
-  </div>
-</section>
-<section class="track-section" style="background-image: url('Antartide.PNG.PNG');">
-  <div class="overlay">
-    <h2>ANTARTIDE</h2>
-    <button onclick="togglePlay('antartide-audio')">▶</button>
-    <p>◼︎</p> <!-- Lastra di ghiaccio / porta -->
-    <audio id="antartide-audio" src="ANTARTIDE - mix 01.wav"></audio>
-  </div>
-</section>
+  </script>
+
+</body>
+</html>

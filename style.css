@@ -1,8 +1,9 @@
 body {
-  margin: 0;
-  font-family: 'Helvetica Neue', sans-serif;
   background-color: #111;
-  color: #f0f0f0;
+  color: white;
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
 header {
@@ -11,87 +12,58 @@ header {
 }
 
 .cover {
-  width: 100%;
-  max-width: 600px;
-  height: auto;
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto;
+  display: block;
   border-radius: 10px;
 }
 
-.tracklist {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+section {
   padding: 20px;
 }
 
 .track {
-  background-color: #1a1a1a;
-  border: 1px solid #333;
-  border-radius: 10px;
-  padding: 15px;
-  margin: 15px 0;
-  width: 90%;
-  max-width: 600px;
+  margin-bottom: 30px;
   text-align: center;
 }
 
 .track img {
-  max-width: 100%;
+  width: 100%;
+  max-width: 500px;
   border-radius: 10px;
-  margin-bottom: 10px;
 }
 
-.track h2 {
-  font-size: 1.2em;
-  margin-bottom: 10px;
-  font-family: 'Courier New', Courier, monospace;
+.track h3 {
+  margin: 10px 0 5px;
+  font-size: 18px;
 }
 
 audio {
-  width: 100%;
+  width: 90%;
+  max-width: 500px;
   margin-top: 10px;
 }
 
 .mondo-section {
   padding: 40px 20px;
-  background-color: #000;
-  text-align: center;
 }
 
 .mondo-section h2 {
-  font-size: 1.5em;
+  text-align: center;
   margin-bottom: 20px;
-  font-family: 'Courier New', Courier, monospace;
 }
 
-.mondo-gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
-  justify-items: center;
+.mondo-images {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
 }
 
-.mondo-gallery img {
-  width: 100%;
-  max-width: 180px;
-  height: auto;
-  border-radius: 8px;
-  border: 1px solid #333;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
-
-.mondo-gallery img:hover {
-  transform: scale(1.05);
-}
-
-/* Responsive tweaks */
-@media (max-width: 600px) {
-  .track h2 {
-    font-size: 1em;
-  }
-
-  .mondo-gallery {
-    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  }
+.mondo-images img {
+  width: 45%;
+  max-width: 300px;
+  border-radius: 10px;
+  display: block;
 }

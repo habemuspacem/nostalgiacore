@@ -48,3 +48,14 @@
     <div class="track-element">🧊</div> <!-- Lastra di ghiaccio/porta -->
   </div>
 </section>
+<script>
+  function togglePlay(id) {
+    const audio = document.getElementById(id);
+    if (audio.paused) {
+      audio.currentTime = 0;
+      audio.play();
+    } else {
+      audio.pause();
+    }
+  }
+</script>

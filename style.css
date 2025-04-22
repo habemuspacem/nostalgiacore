@@ -1,59 +1,97 @@
 body {
-  font-family: Arial, sans-serif;
-  background-color: #121212;
-  color: #f0f0f0;
   margin: 0;
-  padding: 0;
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: #111;
+  color: #f0f0f0;
 }
 
-.copertina img {
-  width: 100%;
-  display: block;
-}
-
-.tracklist, .mondo-nostalgiacore {
+header {
+  text-align: center;
   padding: 20px;
 }
 
-h2 {
-  font-size: 2em;
-  margin-bottom: 1em;
+.cover {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 10px;
+}
+
+.tracklist {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.track {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 15px 0;
+  width: 90%;
+  max-width: 600px;
   text-align: center;
 }
 
-.brano {
-  margin-bottom: 2em;
-  border-bottom: 1px solid #444;
-  padding-bottom: 1em;
+.track img {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
-.titolo-graffiti {
-  font-family: 'Comic Sans MS', cursive;
-  color: #ff69b4;
-  font-size: 1.5em;
-}
-
-.elemento {
-  width: 100px;
-  height: auto;
-  display: block;
-  margin: 0.5em 0;
+.track h2 {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 audio {
   width: 100%;
-  max-width: 400px;
+  margin-top: 10px;
 }
 
-.galleria {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  justify-content: center;
+.mondo-section {
+  padding: 40px 20px;
+  background-color: #000;
+  text-align: center;
 }
 
-.mondo-img {
-  width: 150px;
+.mondo-section h2 {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.mondo-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  justify-items: center;
+}
+
+.mondo-gallery img {
+  width: 100%;
+  max-width: 180px;
   height: auto;
-  border: 2px solid #fff;
+  border-radius: 8px;
+  border: 1px solid #333;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.mondo-gallery img:hover {
+  transform: scale(1.05);
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .track h2 {
+    font-size: 1em;
+  }
+
+  .mondo-gallery {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  }
 }

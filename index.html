@@ -3,54 +3,61 @@
 <head>
   <meta charset="UTF-8">
   <title>nostalgiacore.net</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <section class="track-section" style="background-image: url('images/Intro.PNG.PNG');">
-    <div class="overlay">
-      <h2>INTRO</h2>
-      <button onclick="togglePlay('intro-audio')">▶</button>
-      <p>📱</p>
-      <audio id="intro-audio" src="audio/INTRO_snippet.mp3"></audio>
-    </div>
-  </section>
+  <header>
+    <h1>nostalgiacore.net</h1>
+  </header>
 
-  <section class="track-section" style="background-image: url('images/Penombra.PNG.PNG');">
-    <div class="overlay">
-      <h2>PENOMBRA</h2>
-      <button onclick="togglePlay('penombra-audio')">▶</button>
-      <p>🌴</p>
-      <audio id="penombra-audio" src="audio/PENOMBRA_snippet.mp3"></audio>
-    </div>
-  </section>
+  <main>
+    <section class="track-section" style="background-image: url('images/Intro.PNG.PNG');">
+      <div class="overlay">
+        <h2>INTRO</h2>
+        <button onclick="togglePlay('intro-audio')">▶</button>
+        <p>📱</p>
+        <audio id="intro-audio" src="audio/INTRO - mix 01 - CUT.mp3"></audio>
+      </div>
+    </section>
 
-  <section class="track-section" style="background-image: url('images/Guai.PNG.PNG');">
-    <div class="overlay">
-      <h2>GUAI</h2>
-      <button onclick="togglePlay('guai-audio')">▶</button>
-      <p>⚡️</p>
-      <audio id="guai-audio" src="audio/GUAI_snippet.mp3"></audio>
-    </div>
-  </section>
+    <section class="track-section" style="background-image: url('images/Penombra.PNG.PNG');">
+      <div class="overlay">
+        <h2>PENOMBRA</h2>
+        <button onclick="togglePlay('penombra-audio')">▶</button>
+        <p>🌴</p>
+        <audio id="penombra-audio" src="audio/PENOMBRA - mix 01 - CUT.mp3"></audio>
+      </div>
+    </section>
 
-  <section class="track-section" style="background-image: url('images/Orecchini.PNG.PNG');">
-    <div class="overlay">
-      <h2>ORECCHINI</h2>
-      <button onclick="togglePlay('orecchini-audio')">▶</button>
-      <p>●●</p>
-      <audio id="orecchini-audio" src="audio/ORECCHINI_snippet.mp3"></audio>
-    </div>
-  </section>
+    <section class="track-section" style="background-image: url('images/Guai.PNG.PNG');">
+      <div class="overlay">
+        <h2>GUAI</h2>
+        <button onclick="togglePlay('guai-audio')">▶</button>
+        <p>⚡️</p>
+        <audio id="guai-audio" src="audio/GUAI - mix 01 - CUT.mp3"></audio>
+      </div>
+    </section>
 
-  <section class="track-section" style="background-image: url('images/Antartide.PNG.PNG');">
-    <div class="overlay">
-      <h2>ANTARTIDE</h2>
-      <button onclick="togglePlay('antartide-audio')">▶</button>
-      <p>◼︎</p>
-      <audio id="antartide-audio" src="audio/ANTARTIDE_snippet.mp3"></audio>
-    </div>
-  </section>
+    <section class="track-section" style="background-image: url('images/Orecchini.PNG.PNG');">
+      <div class="overlay">
+        <h2>ORECCHINI</h2>
+        <button onclick="togglePlay('orecchini-audio')">▶</button>
+        <p>●●</p>
+        <audio id="orecchini-audio" src="audio/ORECCHINI - mix 01 - CUT.mp3"></audio>
+      </div>
+    </section>
+
+    <section class="track-section" style="background-image: url('images/Antartide.PNG.PNG');">
+      <div class="overlay">
+        <h2>ANTARTIDE</h2>
+        <button onclick="togglePlay('antartide-audio')">▶</button>
+        <p>◼︎</p>
+        <audio id="antartide-audio" src="audio/ANTARTIDE - mix 01 - CUT.mp3"></audio>
+      </div>
+    </section>
+  </main>
 
   <script>
     function togglePlay(id) {

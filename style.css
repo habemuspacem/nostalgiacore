@@ -1,80 +1,75 @@
-/* Stile base */
-body {
-  background-color: #111;
-  color: white;
-  font-family: 'Arial', sans-serif;
+/* Reset base */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
-/* Header con copertina */
+body {
+  font-family: 'Courier New', monospace;
+  background-color: #111;
+  color: #f0f0f0;
+  line-height: 1.6;
+  padding-bottom: 50px;
+}
+
 header {
   text-align: center;
-  padding: 20px;
+  padding: 30px 20px 10px;
 }
 
-.cover {
-  width: 90%;
-  max-width: 400px;
-  margin: 0 auto;
-  display: block;
-  border-radius: 10px;
+header h1 {
+  font-size: 2.2rem;
+  color: #fff;
+  letter-spacing: 2px;
 }
 
-/* Sezioni */
-section {
-  padding: 20px;
-}
-
-/* Tracce audio */
-.track {
-  margin-bottom: 40px;
-  text-align: center;
-}
-
-.track img {
-  width: 90%;
-  max-width: 400px;
-  height: auto;
-  border-radius: 10px;
-}
-
-.track h3 {
-  margin: 10px 0 5px;
-  font-size: 16px;
-}
-
-/* Player audio */
-audio {
-  width: 90%;
-  max-width: 400px;
-  margin-top: 10px;
-  border-radius: 5px;
-  background-color: #222;
-}
-
-/* Sezione mondo */
-.mondo-section {
-  padding: 40px 20px;
-}
-
-.mondo-section h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 20px;
-}
-
-.mondo-images {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-}
-
-.mondo-images img {
+.tracklist {
   width: 100%;
-  max-width: 180px;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.track {
+  margin-bottom: 50px;
+  background-color: #1a1a1a;
   border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+}
+
+.track-img {
+  width: 100%;
   display: block;
+  max-height: 60vh;
   object-fit: cover;
+}
+
+.track-info {
+  padding: 20px;
+}
+
+.track-info h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: #fff;
+}
+
+audio {
+  width: 100%;
+  height: 40px;
+  background-color: #222;
+  border-radius: 5px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .track-info h2 {
+    font-size: 1.2rem;
+  }
+
+  audio {
+    height: 35px;
+  }
 }

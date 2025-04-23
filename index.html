@@ -18,46 +18,61 @@
     <section class="track">
       <img src="images/Antartide.PNG.PNG" alt="Antartide">
       <audio id="audio1" src="audio/ANTARTIDE_snippet.mp3"></audio>
-      <button onclick="togglePlay('audio1', this)">Play/Pause</button>
+      <button onclick="togglePlay('audio1', this, 'frase1')">Play/Pause</button>
+      <p class="frase" id="frase1">Se la vuoi te la trovo</p>
     </section>
 
     <section class="track">
       <img src="images/Intro.PNG.PNG" alt="Intro">
       <audio id="audio2" src="audio/INTRO_snippet.mp3"></audio>
-      <button onclick="togglePlay('audio2', this)">Play/Pause</button>
+      <button onclick="togglePlay('audio2', this, 'frase2')">Play/Pause</button>
+      <p class="frase" id="frase2">Due pianeti uguali</p>
     </section>
 
     <section class="track">
       <img src="images/Penombra.PNG.PNG" alt="Penombra">
       <audio id="audio3" src="audio/PENOMBRA_snippet.mp3"></audio>
-      <button onclick="togglePlay('audio3', this)">Play/Pause</button>
+      <button onclick="togglePlay('audio3', this, 'frase3')">Play/Pause</button>
+      <p class="frase" id="frase3">La penombra tu l’hai vista più?</p>
     </section>
 
     <section class="track">
       <img src="images/Guai.PNG.PNG" alt="Guai">
       <audio id="audio4" src="audio/GUAI_snippet.mp3"></audio>
-      <button onclick="togglePlay('audio4', this)">Play/Pause</button>
+      <button onclick="togglePlay('audio4', this, 'frase4')">Play/Pause</button>
+      <p class="frase" id="frase4">Sì che sei strana</p>
     </section>
 
     <section class="track">
       <img src="images/Orecchini.PNG.PNG" alt="Orecchini">
       <audio id="audio5" src="audio/ORECCHINI_snippet.mp3"></audio>
-      <button onclick="togglePlay('audio5', this)">Play/Pause</button>
+      <button onclick="togglePlay('audio5', this, 'frase5')">Play/Pause</button>
+      <p class="frase" id="frase5">Non l’hai mai detto</p>
     </section>
   </main>
 
   <script>
-    function togglePlay(id, btn) {
+    function togglePlay(id, btn, fraseId) {
       const audio = document.getElementById(id);
+      const frase = document.getElementById(fraseId);
+
+      // Pausa tutti gli audio e nasconde tutte le frasi
+      document.querySelectorAll('audio').forEach(a => {
+        if (a !== audio) a.pause();
+      });
+      document.querySelectorAll('.frase').forEach(f => {
+        f.style.opacity = '0';
+      });
+
+      // Play o pausa del brano selezionato
       if (audio.paused) {
-        document.querySelectorAll('audio').forEach(a => {
-          if (a !== audio) a.pause();
-        });
         audio.play();
         btn.textContent = 'Pause';
+        frase.style.opacity = '1';
       } else {
         audio.pause();
         btn.textContent = 'Play';
+        frase.style.opacity = '0';
       }
     }
   </script>

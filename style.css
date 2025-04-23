@@ -15,6 +15,7 @@ body {
 }
 
 .neon-title {
+  font-family: 'Rubik Doodle Shadow', cursive;
   font-size: 2.5em;
   color: #8fd3ff;
   text-shadow: 0 0 10px #8fd3ff, 0 0 20px #8fd3ff, 0 0 30px #8fd3ff;
@@ -23,8 +24,8 @@ body {
   word-break: break-word;
 }
 
-.nav-bar a {
-  font-family: 'Permanent Marker', cursive;
+.nav-links a {
+  font-family: 'Rock Salt', cursive;
   color: #a4d8ff;
   font-size: 1.3em;
   text-decoration: none;
@@ -33,7 +34,7 @@ body {
   transition: color 0.3s;
 }
 
-.nav-bar a:hover {
+.nav-links a:hover {
   color: #ffffff;
 }
 

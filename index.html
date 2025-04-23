@@ -1,45 +1,44 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
   <title>Nostalgiacore</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="track">
+    <h3>Antartide</h3>
+    <img src="images/antartide.PNG.PNG" alt="Antartide">
+    <button class="play-button" onclick="togglePlay(this, 'audio-antartide')">Play</button>
+    <audio id="audio-antartide" src="audio/ANTARTIDE_snippet.mp3"></audio>
+  </div>
 
-  <div class="container">
+  <div class="track">
+    <h3>Intro</h3>
+    <img src="images/intro.PNG.PNG" alt="Intro">
+    <button class="play-button" onclick="togglePlay(this, 'audio-intro')">Play</button>
+    <audio id="audio-intro" src="audio/INTRO_snippet.mp3"></audio>
+  </div>
 
-    <div class="track">
-      <img src="images/antartide.PNG.PNG" alt="Antartide" />
-      <button class="play-button" onclick="togglePlay(this, 'audio-antartide')">Play</button>
-      <audio id="audio-antartide" src="audio/ANTARTIDE_snippet.mp3"></audio>
-    </div>
+  <div class="track">
+    <h3>Penombra</h3>
+    <img src="images/penombra.PNG.PNG" alt="Penombra">
+    <button class="play-button" onclick="togglePlay(this, 'audio-penombra')">Play</button>
+    <audio id="audio-penombra" src="audio/PENOMBRA_snippet.mp3"></audio>
+  </div>
 
-    <div class="track">
-      <img src="images/intro.PNG.PNG" alt="Intro" />
-      <button class="play-button" onclick="togglePlay(this, 'audio-intro')">Play</button>
-      <audio id="audio-intro" src="audio/INTRO_snippet.mp3"></audio>
-    </div>
+  <div class="track">
+    <h3>Guai</h3>
+    <img src="images/guai.PNG.PNG" alt="Guai">
+    <button class="play-button" onclick="togglePlay(this, 'audio-guai')">Play</button>
+    <audio id="audio-guai" src="audio/GUAI_snippet.mp3"></audio>
+  </div>
 
-    <div class="track">
-      <img src="images/penombra.PNG.PNG" alt="Penombra" />
-      <button class="play-button" onclick="togglePlay(this, 'audio-penombra')">Play</button>
-      <audio id="audio-penombra" src="audio/PENOMBRA_snippet.mp3"></audio>
-    </div>
-
-    <div class="track">
-      <img src="images/guai.PNG.PNG" alt="Guai" />
-      <button class="play-button" onclick="togglePlay(this, 'audio-guai')">Play</button>
-      <audio id="audio-guai" src="audio/GUAI_snippet.mp3"></audio>
-    </div>
-
-    <div class="track">
-      <img src="images/orecchini.PNG.PNG" alt="Orecchini" />
-      <button class="play-button" onclick="togglePlay(this, 'audio-orecchini')">Play</button>
-      <audio id="audio-orecchini" src="audio/ORECCHINI_snippet.mp3"></audio>
-    </div>
-
+  <div class="track">
+    <h3>Orecchini</h3>
+    <img src="images/orecchini.PNG.PNG" alt="Orecchini">
+    <button class="play-button" onclick="togglePlay(this, 'audio-orecchini')">Play</button>
+    <audio id="audio-orecchini" src="audio/ORECCHINI_snippet.mp3"></audio>
   </div>
 
   <script>
@@ -60,6 +59,5 @@
       }
     }
   </script>
-
 </body>
 </html>

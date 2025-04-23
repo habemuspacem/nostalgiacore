@@ -37,7 +37,6 @@ main {
   width: 90%;
   max-width: 400px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  position: relative;
 }
 
 .track:hover {
@@ -74,18 +73,30 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* Frasi poetiche con fade in/out */
-.poetic-phrase {
-  opacity: 0;
-  transition: opacity 1s ease;
+/* Frasi poetiche animate */
+.track-phrase {
+  font-family: 'Monoton', cursive;
+  color: #00ffff;
+  font-size: 1.2em;
   text-align: center;
   margin-top: 15px;
-  font-size: 1.1em;
-  font-family: 'Covered By Your Grace', cursive;
-  color: #00ffff;
-  text-shadow: 0 0 5px #00ffff;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  text-shadow: 0 0 6px #00ffff, 0 0 12px #00ffff;
+  animation: scrollText 10s linear infinite;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-.track.playing .poetic-phrase {
-  opacity: 1;
+/* Movimento orizzontale */
+@keyframes scrollText {
+  0% {
+    transform: translateX(30%);
+  }
+  50% {
+    transform: translateX(-30%);
+  }
+  100% {
+    transform: translateX(30%);
+  }
 }

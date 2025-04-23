@@ -79,4 +79,15 @@ button:hover {
   background-color: #00ffff;
   color: #000000;
   transform: scale(1.05);
+.logo-title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0 20px 0;
+}
+
+.logo-title img {
+  max-width: 90%;
+  height: auto;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.4));
 }

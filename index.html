@@ -1,63 +1,62 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nostalgiacore</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="track">
-    <h3>Antartide</h3>
-    <img src="images/antartide.PNG.PNG" alt="Antartide">
-    <button class="play-button" onclick="togglePlay(this, 'audio-antartide')">Play</button>
-    <audio id="audio-antartide" src="audio/ANTARTIDE_snippet.mp3"></audio>
-  </div>
 
-  <div class="track">
-    <h3>Intro</h3>
-    <img src="images/intro.PNG.PNG" alt="Intro">
-    <button class="play-button" onclick="togglePlay(this, 'audio-intro')">Play</button>
-    <audio id="audio-intro" src="audio/INTRO_snippet.mp3"></audio>
-  </div>
+  <!-- Copertina -->
+  <section class="cover">
+    <img src="images/Antartide.PNG.PNG" alt="Copertina Antartide">
+  </section>
 
-  <div class="track">
-    <h3>Penombra</h3>
-    <img src="images/penombra.PNG.PNG" alt="Penombra">
-    <button class="play-button" onclick="togglePlay(this, 'audio-penombra')">Play</button>
-    <audio id="audio-penombra" src="audio/PENOMBRA_snippet.mp3"></audio>
-  </div>
+  <!-- Tracklist -->
+  <section class="tracklist">
 
-  <div class="track">
-    <h3>Guai</h3>
-    <img src="images/guai.PNG.PNG" alt="Guai">
-    <button class="play-button" onclick="togglePlay(this, 'audio-guai')">Play</button>
-    <audio id="audio-guai" src="audio/GUAI_snippet.mp3"></audio>
-  </div>
+    <div class="track">
+      <img src="images/Antartide.PNG.PNG" alt="Antartide">
+      <audio controls>
+        <source src="audio/ANTARTIDE_snippet.mp3" type="audio/mpeg">
+        Il tuo browser non supporta l’audio.
+      </audio>
+    </div>
 
-  <div class="track">
-    <h3>Orecchini</h3>
-    <img src="images/orecchini.PNG.PNG" alt="Orecchini">
-    <button class="play-button" onclick="togglePlay(this, 'audio-orecchini')">Play</button>
-    <audio id="audio-orecchini" src="audio/ORECCHINI_snippet.mp3"></audio>
-  </div>
+    <div class="track">
+      <img src="images/Intro.PNG.PNG" alt="Intro">
+      <audio controls>
+        <source src="audio/INTRO_snippet.mp3" type="audio/mpeg">
+        Il tuo browser non supporta l’audio.
+      </audio>
+    </div>
 
-  <script>
-    function togglePlay(button, audioId) {
-      const audio = document.getElementById(audioId);
-      const isPlaying = !audio.paused;
+    <div class="track">
+      <img src="images/Penombra.PNG.PNG" alt="Penombra">
+      <audio controls>
+        <source src="audio/PENOMBRA_snippet.mp3" type="audio/mpeg">
+        Il tuo browser non supporta l’audio.
+      </audio>
+    </div>
 
-      document.querySelectorAll("audio").forEach(a => {
-        a.pause();
-        a.currentTime = 0;
-      });
+    <div class="track">
+      <img src="images/Guai.PNG.PNG" alt="Guai">
+      <audio controls>
+        <source src="audio/GUAI_snippet.mp3" type="audio/mpeg">
+        Il tuo browser non supporta l’audio.
+      </audio>
+    </div>
 
-      document.querySelectorAll(".play-button").forEach(b => b.textContent = "Play");
+    <div class="track">
+      <img src="images/Orecchini.PNG.PNG" alt="Orecchini">
+      <audio controls>
+        <source src="audio/ORECCHINI_snippet.mp3" type="audio/mpeg">
+        Il tuo browser non supporta l’audio.
+      </audio>
+    </div>
 
-      if (!isPlaying) {
-        audio.play();
-        button.textContent = "Pause";
-      }
-    }
-  </script>
+  </section>
+
 </body>
 </html>

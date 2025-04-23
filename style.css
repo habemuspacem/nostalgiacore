@@ -57,20 +57,6 @@ main {
   overflow: hidden;
 }
 
-.track::before {
-  content: '';
-  position: absolute;
-  top: -20px;
-  left: -20px;
-  width: 150%;
-  height: 150%;
-  background: url('images/spruzzo.png') no-repeat center center;
-  background-size: cover;
-  opacity: 0.02;
-  pointer-events: none;
-  transform: rotate(-15deg);
-}
-
 .track img {
   width: 100%;
   border-radius: 6px;

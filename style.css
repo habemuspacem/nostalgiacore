@@ -72,3 +72,12 @@ button:hover {
   text-shadow: none;
   transform: scale(1.05);
 }
+.frase {
+  margin-top: 15px;
+  font-family: 'Covered By Your Grace', cursive;
+  font-size: 1.1em;
+  color: #ffffff;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}

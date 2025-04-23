@@ -1,83 +1,76 @@
-/* Font generali */
-body {
-  margin: 0;
-  padding: 0;
-  background-color: #0a0f0f;
-  font-family: Arial, sans-serif;
-  color: #ffffff;
-}
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nostalgiacore</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1 class="graffiti-title">www.Nostalgiacore.net</h1>
+  </header>
 
-/* Titolo principale */
-header {
-  text-align: center;
-  margin: 30px 0;
-}
+  <main>
+    <section class="track">
+      <img src="images/Antartide.PNG.PNG" alt="Antartide">
+      <audio id="audio1" src="audio/ANTARTIDE_snippet.mp3"></audio>
+      <button onclick="togglePlay('audio1', this, this.nextElementSibling.parentElement)">Play/Pause</button>
+      <p class="poetic-phrase">Se la vuoi te la trovo</p>
+    </section>
 
-.graffiti-title {
-  font-family: 'Covered By Your Grace', cursive;
-  font-size: 2.5em;
-  color: #00ffff;
-  text-shadow: 0 0 8px #00ffff, 0 0 12px #00ffff;
-}
+    <section class="track">
+      <img src="images/Intro.PNG.PNG" alt="Intro">
+      <audio id="audio2" src="audio/INTRO_snippet.mp3"></audio>
+      <button onclick="togglePlay('audio2', this, this.nextElementSibling.parentElement)">Play/Pause</button>
+      <p class="poetic-phrase">Due pianeti uguali</p>
+    </section>
 
-/* Sezione dei brani */
-main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 40px;
-  padding: 20px;
-}
+    <section class="track">
+      <img src="images/Penombra.PNG.PNG" alt="Penombra">
+      <audio id="audio3" src="audio/PENOMBRA_snippet.mp3"></audio>
+      <button onclick="togglePlay('audio3', this, this.nextElementSibling.parentElement)">Play/Pause</button>
+      <p class="poetic-phrase">La penombra tu l’hai vista più?</p>
+    </section>
 
-.track {
-  background-color: #121212;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
-  width: 90%;
-  max-width: 400px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    <section class="track">
+      <img src="images/Guai.PNG.PNG" alt="Guai">
+      <audio id="audio4" src="audio/GUAI_snippet.mp3"></audio>
+      <button onclick="togglePlay('audio4', this, this.nextElementSibling.parentElement)">Play/Pause</button>
+      <p class="poetic-phrase">Sì che sei strana</p>
+    </section>
 
-.track:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
-}
+    <section class="track">
+      <img src="images/Orecchini.PNG.PNG" alt="Orecchini">
+      <audio id="audio5" src="audio/ORECCHINI_snippet.mp3"></audio>
+      <button onclick="togglePlay('audio5', this, this.nextElementSibling.parentElement)">Play/Pause</button>
+      <p class="poetic-phrase">Non l’hai mai detto</p>
+    </section>
+  </main>
 
-.track img {
-  width: 100%;
-  border-radius: 12px;
-  margin-bottom: 15px;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
-}
+  <script>
+    function togglePlay(id, btn, trackSection) {
+      const audio = document.getElementById(id);
 
-/* Pulsante Play/Pause */
-button {
-  font-family: 'Rock Salt', cursive;
-  font-size: 1.1em;
-  color: #00ffff;
-  background-color: transparent;
-  border: 2px solid #00ffff;
-  padding: 10px 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  display: block;
-  margin: 0 auto;
-}
+      document.querySelectorAll('audio').forEach(a => {
+        if (a !== audio) a.pause();
+      });
 
-button:hover {
-  background-color: #00ffff;
-  color: #000000;
-  text-shadow: none;
-  transform: scale(1.05);
-}
-.frase {
-  margin-top: 15px;
-  font-family: 'Covered By Your Grace', cursive;
-  font-size: 1.1em;
-  color: #ffffff;
-  text-align: center;
-  opacity: 0;
-  transition: opacity 0.5s ease;
-}
+      document.querySelectorAll('.track').forEach(t => t.classList.remove('playing'));
+
+      if (audio.paused) {
+        audio.play();
+        btn.textContent = 'Pause';
+        trackSection.classList.add('playing');
+      } else {
+        audio.pause();
+        btn.textContent = 'Play';
+        trackSection.classList.remove('playing');
+      }
+    }
+  </script>
+</body>
+</html>

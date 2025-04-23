@@ -1,20 +1,23 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nostalgiacore</title>
+  <link href="https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
- <ul class="nav-links">
-  <li><a href="index.html">Home</a></li>
-  <li><a href="merch.html">Merch</a></li>
-  <li><a href="contatti.html">Contatti</a></li>
-</ul>
+    <nav class="nav-bar">
+      <h1 class="neon-title"><a href="index.html">WWW.NOSTALGIACORE.NET</a></h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="merch.html">Merch</a></li>
+        <li><a href="contatti.html">Contatti</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main>
@@ -62,20 +65,5 @@
       }
     }
   </script>
-  <script>
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-      }
-    });
-  }, {
-    threshold: 0.1
-  });
-
-  document.querySelectorAll('.track').forEach(section => {
-    observer.observe(section);
-  });
-</script>
 </body>
 </html>

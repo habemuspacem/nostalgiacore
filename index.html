@@ -2,51 +2,60 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Nostalgiacore</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
 </head>
 <body>
-  <h1>Nostalgiacore</h1>
+  <header>
+    <h1 class="graffiti-title">Nostalgiacore</h1>
+  </header>
 
-  <div class="track">
-    <img src="images/Antartide.PNG.PNG" alt="Antartide" />
-    <audio id="audio1" src="audio/ANTARTIDE_snippet.mp3"></audio>
-    <button onclick="togglePlay('audio1')">Play/Pause</button>
-  </div>
+  <main>
+    <section class="track">
+      <img src="images/Antartide.PNG.PNG" alt="Antartide">
+      <audio id="audio1" src="audio/ANTARTIDE_snippet.mp3"></audio>
+      <button onclick="togglePlay('audio1', this)">Play/Pause</button>
+    </section>
 
-  <div class="track">
-    <img src="images/Intro.PNG.PNG" alt="Intro" />
-    <audio id="audio2" src="audio/INTRO_snippet.mp3"></audio>
-    <button onclick="togglePlay('audio2')">Play/Pause</button>
-  </div>
+    <section class="track">
+      <img src="images/Intro.PNG.PNG" alt="Intro">
+      <audio id="audio2" src="audio/INTRO_snippet.mp3"></audio>
+      <button onclick="togglePlay('audio2', this)">Play/Pause</button>
+    </section>
 
-  <div class="track">
-    <img src="images/Penombra.PNG.PNG" alt="Penombra" />
-    <audio id="audio3" src="audio/PENOMBRA_snippet.mp3"></audio>
-    <button onclick="togglePlay('audio3')">Play/Pause</button>
-  </div>
+    <section class="track">
+      <img src="images/Penombra.PNG.PNG" alt="Penombra">
+      <audio id="audio3" src="audio/PENOMBRA_snippet.mp3"></audio>
+      <button onclick="togglePlay('audio3', this)">Play/Pause</button>
+    </section>
 
-  <div class="track">
-    <img src="images/Guai.PNG.PNG" alt="Guai" />
-    <audio id="audio4" src="audio/GUAI_snippet.mp3"></audio>
-    <button onclick="togglePlay('audio4')">Play/Pause</button>
-  </div>
+    <section class="track">
+      <img src="images/Guai.PNG.PNG" alt="Guai">
+      <audio id="audio4" src="audio/GUAI_snippet.mp3"></audio>
+      <button onclick="togglePlay('audio4', this)">Play/Pause</button>
+    </section>
 
-  <div class="track">
-    <img src="images/Orecchini.PNG.PNG" alt="Orecchini" />
-    <audio id="audio5" src="audio/ORECCHINI_snippet.mp3"></audio>
-    <button onclick="togglePlay('audio5')">Play/Pause</button>
-  </div>
+    <section class="track">
+      <img src="images/Orecchini.PNG.PNG" alt="Orecchini">
+      <audio id="audio5" src="audio/ORECCHINI_snippet.mp3"></audio>
+      <button onclick="togglePlay('audio5', this)">Play/Pause</button>
+    </section>
+  </main>
 
   <script>
-    function togglePlay(id) {
-      const player = document.getElementById(id);
-      if (player.paused) {
-        document.querySelectorAll('audio').forEach(p => { if (p !== player) p.pause(); });
-        player.play();
+    function togglePlay(id, btn) {
+      const audio = document.getElementById(id);
+      if (audio.paused) {
+        document.querySelectorAll('audio').forEach(a => {
+          if (a !== audio) a.pause();
+        });
+        audio.play();
+        btn.textContent = 'Pause';
       } else {
-        player.pause();
+        audio.pause();
+        btn.textContent = 'Play';
       }
     }
   </script>

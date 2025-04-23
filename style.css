@@ -69,35 +69,3 @@ button:hover {
   text-shadow: none;
   transform: scale(1.05);
 }
-
-/* Frasi neon animate */
-.phrase {
-  font-family: 'Permanent Marker', cursive;
-  font-size: 1.2em;
-  color: #00ffff;
-  text-align: center;
-  margin-top: 10px;
-  white-space: nowrap;
-  overflow: hidden;
-  position: absolute;
-  bottom: 70px;
-  left: 50%;
-  transform: translateX(-50%);
-  opacity: 0;
-  transition: opacity 1s ease, transform 10s ease-in-out, font-size 10s ease-in;
-}
-
-.phrase.show {
-  opacity: 1;
-  animation: moveInBlock 10s ease-in-out forwards;
-}
-
-.phrase.hide {
-  opacity: 0;
-  transform: scale(0.3);
-}
-
-@keyframes moveInBlock {
-  0% { transform: translateX(-50%) translateY(0) scale(1); }
-  100% { transform: translateX(-50%) translateY(0px) scale(0.3); }
-}

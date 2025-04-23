@@ -1,4 +1,3 @@
-/* Font generali */
 body {
   margin: 0;
   padding: 0;
@@ -7,7 +6,6 @@ body {
   color: #ffffff;
 }
 
-/* Titolo principale */
 header {
   text-align: center;
   margin: 30px 0;
@@ -20,7 +18,6 @@ header {
   text-shadow: 0 0 8px #00ffff, 0 0 12px #00ffff;
 }
 
-/* Sezione dei brani */
 main {
   display: flex;
   flex-direction: column;
@@ -36,7 +33,8 @@ main {
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
   width: 90%;
   max-width: 400px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
 }
 
 .track:hover {
@@ -51,7 +49,6 @@ main {
   box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
 }
 
-/* Pulsante Play/Pause */
 button {
   font-family: 'Rock Salt', cursive;
   font-size: 1.1em;
@@ -73,30 +70,34 @@ button:hover {
   transform: scale(1.05);
 }
 
-/* Frasi poetiche animate */
-.track-phrase {
-  font-family: 'Monoton', cursive;
-  color: #00ffff;
+/* Frasi neon animate */
+.phrase {
+  font-family: 'Permanent Marker', cursive;
   font-size: 1.2em;
+  color: #00ffff;
   text-align: center;
-  margin-top: 15px;
-  opacity: 0;
-  transition: opacity 1s ease-in-out;
-  text-shadow: 0 0 6px #00ffff, 0 0 12px #00ffff;
-  animation: scrollText 10s linear infinite;
-  overflow: hidden;
+  margin-top: 10px;
   white-space: nowrap;
+  overflow: hidden;
+  position: absolute;
+  bottom: 70px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 1s ease, transform 10s ease-in-out, font-size 10s ease-in;
 }
 
-/* Movimento orizzontale */
-@keyframes scrollText {
-  0% {
-    transform: translateX(30%);
-  }
-  50% {
-    transform: translateX(-30%);
-  }
-  100% {
-    transform: translateX(30%);
-  }
+.phrase.show {
+  opacity: 1;
+  animation: moveInBlock 10s ease-in-out forwards;
+}
+
+.phrase.hide {
+  opacity: 0;
+  transform: scale(0.3);
+}
+
+@keyframes moveInBlock {
+  0% { transform: translateX(-50%) translateY(0) scale(1); }
+  100% { transform: translateX(-50%) translateY(0px) scale(0.3); }
 }

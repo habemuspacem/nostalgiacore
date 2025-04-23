@@ -1,114 +1,140 @@
-body {
+/* Reset base */
+* {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  color: #ffffff;
-  background: linear-gradient(-45deg, #0a0f0f, #001f1f, #002b36, #003f4d);
-  background-size: 400% 400%;
-  animation: backgroundShift 20s ease infinite;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
-@keyframes backgroundShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+body {
+  background: linear-gradient(180deg, #001f2f, #003344);
+  font-family: 'Covered By Your Grace', cursive;
+  color: white;
+  overflow-x: hidden;
 }
 
-header {
-  text-align: center;
-  padding: 10px 0;
-}
+/* NAVBAR */
 .nav-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 15px 20px;
-  border-bottom: 2px solid #00ffff;
-  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  text-align: center;
+  padding: 20px 10px;
 }
 
 .neon-title {
-  font-family: 'Covered By Your Grace', cursive;
-  font-size: 1.6em;
+  font-size: 6vw;
   color: #00ffff;
-  text-shadow: 0 0 5px #00ffff, 0 0 15px #00ffff;
-  margin: 0;
+  font-family: 'Rock Salt', cursive;
+  text-shadow:
+    0 0 5px #00ffff,
+    0 0 10px #00ffff,
+    0 0 20px #00ffff,
+    0 0 40px #00ffff;
+  animation: flicker 2.5s infinite alternate;
+  margin-bottom: 10px;
+}
+
+@keyframes flicker {
+  0% { text-shadow: 0 0 5px #00ffff; }
+  50% { text-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff; }
+  100% { text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff; }
 }
 
 .nav-links {
-  display: flex;
-  gap: 20px;
   list-style: none;
-  margin: 0;
-  padding: 0;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
-.nav-links li a {
-  font-family: 'Rock Salt', cursive;
-  color: #00ffff;
+.nav-links a {
+  font-size: 4vw;
   text-decoration: none;
-  font-size: 0.95em;
-  padding: 6px 10px;
-  border-radius: 5px;
-  transition: all 0.3s ease;
-  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff;
+  color: #00ffff;
+  text-shadow:
+    0 0 5px #00ffff,
+    0 0 10px #00ffff;
+  transition: color 0.3s;
 }
 
-.nav-links li a:hover {
-  background-color: #00ffff;
-  color: #000;
-  box-shadow: 0 0 10px #00ffff;
+.nav-links a:hover {
+  color: #00cccc;
 }
 
+/* TRACK SECTIONS */
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 40px;
-  padding: 20px;
+  padding-bottom: 50px;
 }
 
 .track {
-  background-color: #121212;
-  border-radius: 20px;
+  background: rgba(0, 0, 0, 0.6);
   padding: 20px;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+  margin: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 15px #00ffff, inset 0 0 8px #00ffff40;
   width: 90%;
   max-width: 400px;
-  position: relative;
-  overflow: hidden;
+  text-align: center;
+  transition: transform 0.3s ease;
 }
 
 .track:hover {
-  transform: scale(1.03);
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.6);
+  transform: scale(1.02);
 }
 
 .track img {
   width: 100%;
-  border-radius: 12px;
-  margin-bottom: 15px;
-  box-shadow: 0 0 15px rgba(0, 255, 255, 0.1);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  transition: box-shadow 0.3s ease;
 }
 
+.track img:hover {
+  box-shadow: 0 0 20px #00ffffaa;
+}
+
+/* BUTTON STYLE */
 button {
-  font-family: 'Rock Salt', cursive;
-  font-size: 1.1em;
-  color: #00ffff;
-  background-color: transparent;
+  background: transparent;
   border: 2px solid #00ffff;
+  color: #00ffff;
+  font-size: 1.2rem;
   padding: 10px 20px;
   border-radius: 10px;
+  font-family: 'Covered By Your Grace', cursive;
   cursor: pointer;
-  transition: all 0.3s ease;
-  display: block;
-  margin: 0 auto;
+  transition: all 0.3s;
+  text-shadow:
+    0 0 3px #00ffff,
+    0 0 5px #00ffff;
 }
 
 button:hover {
-  background-color: #00ffff;
-  color: #000000;
-  transform: scale(1.05);
+  background: #00ffff;
+  color: #000;
+  text-shadow: none;
+}
+/* FADE-IN ANIMATION */
+.track {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.track.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Responsive Title Size Tuning */
+@media (max-width: 600px) {
+  .neon-title {
+    font-size: 7vw;
+  }
+
+  .nav-links a {
+    font-size: 5vw;
+  }
 }

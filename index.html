@@ -12,7 +12,7 @@
   <header>
     <nav class="nav-bar">
       <h1 class="neon-title">WWW.NOSTALGIACORE.NET</h1>
-      <!-- Frase segreta -->
+      <!-- Frase segreta iniziale -->
       <div id="secret-message" class="hidden">L’ultima stanza si apre a fine Giugno.</div>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
@@ -52,22 +52,39 @@
       <audio id="audio5" src="audio/ORECCHINI_snippet.mp3"></audio>
       <button onclick="togglePlay('audio5', this)">Play/Pause</button>
     </section>
+
+    <!-- Frase che compare con il player -->
+    <div id="player-secret-message" class="hidden">L’ultima stanza si apre a fine Giugno.</div>
+
   </main>
 
   <script>
     function togglePlay(audioId, btn) {
       const audio = document.getElementById(audioId);
       document.querySelectorAll('audio').forEach(a => { if (a !== audio) a.pause(); });
+
       if (audio.paused) {
         audio.play();
         btn.textContent = 'Pause';
+
+        // Mostra la frase segreta al click sul player
+        const secondMsg = document.getElementById("player-secret-message");
+        secondMsg.classList.remove("hidden");
+        secondMsg.classList.add("reveal");
+
+        // Nascondi dopo 6 secondi
+        setTimeout(() => {
+          secondMsg.classList.remove("reveal");
+          secondMsg.classList.add("hidden");
+        }, 6000);
+
       } else {
         audio.pause();
         btn.textContent = 'Play';
       }
     }
 
-    // Mostra la frase segreta dopo 8 secondi
+    // Frase iniziale dopo 8 secondi
     document.addEventListener("DOMContentLoaded", function () {
       const secret = document.getElementById("secret-message");
       setTimeout(() => {

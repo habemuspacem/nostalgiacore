@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nostalgiacore</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&family=Rubik+Wet+Paint&display=swap" rel="stylesheet" />
 </head>
 <body>
 
   <header>
     <nav class="nav-bar">
       <h1 class="neon-title">WWW.NOSTALGIACORE.NET</h1>
-      <!-- Frase segreta iniziale -->
       <div id="secret-message" class="hidden">L’ultima stanza si apre a fine Giugno.</div>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
@@ -52,39 +52,33 @@
       <audio id="audio5" src="audio/ORECCHINI_snippet.mp3"></audio>
       <button onclick="togglePlay('audio5', this)">Play/Pause</button>
     </section>
-
-    <!-- Frase che compare con il player -->
-    <div id="player-secret-message" class="hidden">L’ultima stanza si apre a fine Giugno.</div>
-
   </main>
 
   <script>
     function togglePlay(audioId, btn) {
       const audio = document.getElementById(audioId);
-      document.querySelectorAll('audio').forEach(a => { if (a !== audio) a.pause(); });
+      const secret = document.getElementById("secret-message");
+
+      document.querySelectorAll('audio').forEach(a => {
+        if (a !== audio) a.pause();
+      });
 
       if (audio.paused) {
         audio.play();
         btn.textContent = 'Pause';
-
-        // Mostra la frase segreta al click sul player
-        const secondMsg = document.getElementById("player-secret-message");
-        secondMsg.classList.remove("hidden");
-        secondMsg.classList.add("reveal");
-
-        // Nascondi dopo 6 secondi
-        setTimeout(() => {
-          secondMsg.classList.remove("reveal");
-          secondMsg.classList.add("hidden");
-        }, 6000);
-
       } else {
         audio.pause();
         btn.textContent = 'Play';
       }
+
+      // Rendi visibile il messaggio se non lo è già
+      if (!secret.classList.contains("reveal")) {
+        secret.classList.remove("hidden");
+        secret.classList.add("reveal");
+      }
     }
 
-    // Frase iniziale dopo 8 secondi
+    // Frase segreta compare dopo 8s
     document.addEventListener("DOMContentLoaded", function () {
       const secret = document.getElementById("secret-message");
       setTimeout(() => {
@@ -92,7 +86,6 @@
         secret.classList.add("reveal");
       }, 8000);
 
-      // Tap per nascondere
       secret.addEventListener("click", () => {
         secret.style.display = "none";
       });

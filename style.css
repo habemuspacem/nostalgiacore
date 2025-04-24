@@ -1,140 +1,89 @@
+/* Corpo della pagina */
 body {
   margin: 0;
-  padding: 0;
-  font-family: 'Permanent Marker', cursive;
-  background: linear-gradient(135deg, #0d0d1a, #1a1a2e);
-  color: #8fd3ff;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #0d0d1a, #000000);
+  color: white;
   overflow-x: hidden;
 }
 
-header {
-  text-align: center;
-  padding-top: 20px;
-  position: relative;
-}
-
-.neon-title {
-  font-size: 2.2em;
-  color: #8fd3ff;
-  text-shadow: 0 0 5px #8fd3ff, 0 0 10px #8fd3ff, 0 0 20px #00ccff;
-  margin: 0 auto 10px;
-  padding: 0 20px;
-  line-height: 1.2;
-}
-.logo-wrapper {
-  display: inline-block;
-  background: rgba(255, 255, 255, 0.03);
-  padding: 20px 30px;
-  border: 2px dashed rgba(143, 211, 255, 0.4);
-  border-radius: 15px;
-  box-shadow: 0 0 15px rgba(143, 211, 255, 0.2);
-  margin-bottom: 20px;
-  transform: rotate(-1.5deg);
-}
-
-.neon-logo {
-  font-size: 2.3em;
-  color: #8fd3ff;
-  text-shadow:
-    0 0 2px #8fd3ff,
-    0 0 4px #00ccff,
-    0 0 6px #00ccff,
-    2px 2px 2px rgba(0, 0, 0, 0.3);
-  margin: 0;
-  letter-spacing: 1px;
-  animation: pulseLogo 3s ease-in-out infinite;
-}
-
-/* Animazione logo */
-@keyframes pulseLogo {
-  0%, 100% {
-    text-shadow:
-      0 0 2px #8fd3ff,
-      0 0 4px #00ccff,
-      0 0 6px #00ccff;
-    transform: rotate(-1.5deg) scale(1);
-  }
-  50% {
-    text-shadow:
-      0 0 6px #00ccff,
-      0 0 12px #00ccff,
-      0 0 20px #00ccff;
-    transform: rotate(-1.5deg) scale(1.03);
-  }
-}
-.hamburger {
-  display: none;
-  font-size: 2em;
-  color: #8fd3ff;
-  cursor: pointer;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  z-index: 1001;
-}
-
-.nav-links {
+/* Navbar */
+.nav-bar {
   display: flex;
-  justify-content: center;
-  margin-top: 10px;
-  gap: 40px;
-  padding: 0;
-  list-style: none;
-}
-
-.nav-links li a {
-  color: #a3d3ff;
-  text-decoration: none;
-  font-size: 1.2em;
-  transition: color 0.3s ease;
-}
-
-.nav-links li a:hover {
-  color: #ffffff;
-}
-
-main {
-  display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  padding: 30px 10px;
+  padding: 40px 20px 20px 20px;
+  text-align: center;
 }
 
-.track-image {
+/* Titolo principale */
+.neon-title {
+  font-size: 2.8em;
+  color: #8fd3ff;
+  text-shadow: 0 0 8px #8fd3ff, 0 0 16px #8fd3ff, 0 0 30px #8fd3ff;
+  margin-bottom: 20px;
+  text-align: center;
+  max-width: 90%;
+  word-break: break-word;
+}
+
+/* Link del menu */
+.nav-links {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-links li {
+  margin: 10px 0;
+}
+
+.nav-links a {
+  font-family: 'Permanent Marker', cursive;
+  color: #a4d8ff;
+  font-size: 1.4em;
+  text-decoration: none;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.nav-links a:hover {
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+/* Sezione dei brani */
+.track {
+  text-align: center;
+  margin: 40px auto;
+  max-width: 500px;
+  padding: 0 20px;
+}
+
+.track img {
   width: 100%;
-  max-width: 600px;
-  height: auto;
   border-radius: 10px;
+  box-shadow: 0 0 20px #111;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
-  .nav-links {
-    flex-direction: column;
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-in-out;
-    width: 100%;
-    background-color: #0d0d1a;
-  }
+/* Player audio */
+.audio-player {
+  margin-top: 10px;
+}
 
-  .nav-links.open {
-    max-height: 300px;
-  }
+/* Bottoni Play/Pause */
+button {
+  background-color: #66ccff;
+  border: none;
+  padding: 10px 20px;
+  font-family: 'Permanent Marker', cursive;
+  font-size: 1em;
+  cursor: pointer;
+  border-radius: 5px;
+  color: #000;
+  margin-top: 10px;
+  transition: background-color 0.3s;
+}
 
-  .nav-links li {
-    margin: 10px 0;
-  }
-
-  .hamburger {
-    display: block;
-  }
-
-  .nav-bar {
-    align-items: flex-start;
-  }
-
-  .neon-title {
-    font-size: 1.9em;
-  }
+button:hover {
+  background-color: #3399cc;
 }

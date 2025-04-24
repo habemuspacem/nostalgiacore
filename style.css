@@ -12,10 +12,10 @@ body {
   align-items: center;
   padding: 40px 20px 20px 20px;
   text-align: center;
+  position: relative;
 }
 
 .neon-title {
-  font-family: 'Rubik Doodle Shadow', cursive;
   font-size: 2.5em;
   color: #8fd3ff;
   text-shadow: 0 0 10px #8fd3ff, 0 0 20px #8fd3ff, 0 0 30px #8fd3ff;
@@ -24,18 +24,60 @@ body {
   word-break: break-word;
 }
 
+.nav-links {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  padding: 0;
+  margin-top: 10px;
+  list-style: none;
+  flex-wrap: wrap;
+  transition: max-height 0.3s ease;
+}
+
 .nav-links a {
   font-family: 'Rock Salt', cursive;
+  font-size: 1.2em;
   color: #a4d8ff;
-  font-size: 1.3em;
   text-decoration: none;
-  margin: 10px 0;
-  display: block;
-  transition: color 0.3s;
+  position: relative;
+  padding: 8px 12px;
+  transition: 0.3s ease;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  left: 0;
+  bottom: -5px;
+  background-color: #a4d8ff;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
 }
 
 .nav-links a:hover {
   color: #ffffff;
+  text-shadow: 0 0 8px #8fd3ff;
+}
+
+.nav-links a.active {
+  border-bottom: 2px solid #8fd3ff;
+  color: #ffffff;
+}
+
+.hamburger {
+  display: none;
+  font-size: 2em;
+  color: #8fd3ff;
+  cursor: pointer;
+  position: absolute;
+  top: 40px;
+  right: 20px;
 }
 
 .track {
@@ -48,10 +90,11 @@ body {
   width: 100%;
   border-radius: 10px;
   box-shadow: 0 0 20px #111;
+  transition: transform 0.3s ease;
 }
 
-.audio-player {
-  margin-top: 10px;
+.track img:hover {
+  transform: scale(1.03);
 }
 
 button {
@@ -64,8 +107,26 @@ button {
   border-radius: 5px;
   color: #000;
   transition: background-color 0.3s;
+  margin-top: 10px;
 }
 
 button:hover {
   background-color: #3399cc;
+}
+
+/* Responsive: hamburger e menu a colonna */
+@media (max-width: 768px) {
+  .nav-links {
+    flex-direction: column;
+    max-height: 0;
+    overflow: hidden;
+  }
+
+  .nav-links.open {
+    max-height: 300px;
+  }
+
+  .hamburger {
+    display: block;
+  }
 }

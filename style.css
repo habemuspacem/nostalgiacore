@@ -21,7 +21,47 @@ header {
   padding: 0 20px;
   line-height: 1.2;
 }
+.logo-wrapper {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 20px 30px;
+  border: 2px dashed rgba(143, 211, 255, 0.4);
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(143, 211, 255, 0.2);
+  margin-bottom: 20px;
+  transform: rotate(-1.5deg);
+}
 
+.neon-logo {
+  font-size: 2.3em;
+  color: #8fd3ff;
+  text-shadow:
+    0 0 2px #8fd3ff,
+    0 0 4px #00ccff,
+    0 0 6px #00ccff,
+    2px 2px 2px rgba(0, 0, 0, 0.3);
+  margin: 0;
+  letter-spacing: 1px;
+  animation: pulseLogo 3s ease-in-out infinite;
+}
+
+/* Animazione logo */
+@keyframes pulseLogo {
+  0%, 100% {
+    text-shadow:
+      0 0 2px #8fd3ff,
+      0 0 4px #00ccff,
+      0 0 6px #00ccff;
+    transform: rotate(-1.5deg) scale(1);
+  }
+  50% {
+    text-shadow:
+      0 0 6px #00ccff,
+      0 0 12px #00ccff,
+      0 0 20px #00ccff;
+    transform: rotate(-1.5deg) scale(1.03);
+  }
+}
 .hamburger {
   display: none;
   font-size: 2em;

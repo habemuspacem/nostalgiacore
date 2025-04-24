@@ -1,73 +1,25 @@
 body {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: linear-gradient(to bottom, #0d0d1a, #000000);
-  color: white;
+  padding: 0;
+  font-family: 'Permanent Marker', cursive;
+  background: linear-gradient(135deg, #0d0d1a, #1a1a2e);
+  color: #8fd3ff;
   overflow-x: hidden;
 }
 
-.nav-bar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 40px 20px 20px 20px;
+header {
   text-align: center;
+  padding-top: 20px;
   position: relative;
 }
 
 .neon-title {
-  font-size: 2.5em;
+  font-size: 2.2em;
   color: #8fd3ff;
-  text-shadow: 0 0 10px #8fd3ff, 0 0 20px #8fd3ff, 0 0 30px #8fd3ff;
-  margin-bottom: 20px;
-  text-align: center;
-  word-break: break-word;
-}
-
-.nav-links {
-  display: flex;
-  gap: 30px;
-  justify-content: center;
-  padding: 0;
-  margin-top: 10px;
-  list-style: none;
-  flex-wrap: wrap;
-  transition: max-height 0.3s ease;
-}
-
-.nav-links a {
-  font-family: 'Rock Salt', cursive;
-  font-size: 1.2em;
-  color: #a4d8ff;
-  text-decoration: none;
-  position: relative;
-  padding: 8px 12px;
-  transition: 0.3s ease;
-}
-
-.nav-links a::after {
-  content: '';
-  position: absolute;
-  width: 0%;
-  height: 2px;
-  left: 0;
-  bottom: -5px;
-  background-color: #a4d8ff;
-  transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
-}
-
-.nav-links a:hover {
-  color: #ffffff;
-  text-shadow: 0 0 8px #8fd3ff;
-}
-
-.nav-links a.active {
-  border-bottom: 2px solid #8fd3ff;
-  color: #ffffff;
+  text-shadow: 0 0 5px #8fd3ff, 0 0 10px #8fd3ff, 0 0 20px #00ccff;
+  margin: 0 auto 10px;
+  padding: 0 20px;
+  line-height: 1.2;
 }
 
 .hamburger {
@@ -76,57 +28,73 @@ body {
   color: #8fd3ff;
   cursor: pointer;
   position: absolute;
-  top: 40px;
+  top: 20px;
   right: 20px;
+  z-index: 1001;
 }
 
-.track {
-  text-align: center;
-  margin: 40px auto;
-  max-width: 500px;
-}
-
-.track img {
-  width: 100%;
-  border-radius: 10px;
-  box-shadow: 0 0 20px #111;
-  transition: transform 0.3s ease;
-}
-
-.track img:hover {
-  transform: scale(1.03);
-}
-
-button {
-  background-color: #66ccff;
-  border: none;
-  padding: 10px 20px;
-  font-family: 'Permanent Marker', cursive;
-  font-size: 1em;
-  cursor: pointer;
-  border-radius: 5px;
-  color: #000;
-  transition: background-color 0.3s;
+.nav-links {
+  display: flex;
+  justify-content: center;
   margin-top: 10px;
+  gap: 40px;
+  padding: 0;
+  list-style: none;
 }
 
-button:hover {
-  background-color: #3399cc;
+.nav-links li a {
+  color: #a3d3ff;
+  text-decoration: none;
+  font-size: 1.2em;
+  transition: color 0.3s ease;
 }
 
-/* Responsive: hamburger e menu a colonna */
+.nav-links li a:hover {
+  color: #ffffff;
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 10px;
+}
+
+.track-image {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* MOBILE */
 @media (max-width: 768px) {
   .nav-links {
     flex-direction: column;
     max-height: 0;
     overflow: hidden;
+    transition: max-height 0.4s ease-in-out;
+    width: 100%;
+    background-color: #0d0d1a;
   }
 
   .nav-links.open {
     max-height: 300px;
   }
 
+  .nav-links li {
+    margin: 10px 0;
+  }
+
   .hamburger {
     display: block;
+  }
+
+  .nav-bar {
+    align-items: flex-start;
+  }
+
+  .neon-title {
+    font-size: 1.9em;
   }
 }

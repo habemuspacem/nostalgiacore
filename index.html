@@ -2,20 +2,18 @@
 <html lang="it">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nostalgiacore</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&family=Rock+Salt&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
 </head>
 <body>
+
   <header>
     <nav class="nav-bar">
-      <div class="logo-wrapper">
-  <h1 class="neon-logo">WWW.NOSTALGIACORE.NET</h1>
-</div>
-      <div class="hamburger" onclick="toggleMenu()">☰</div>
-      <ul class="nav-links" id="navLinks">
-        <li><a href="index.html" class="active">Home</a></li>
+      <h1 class="neon-title">WWW.NOSTALGIACORE.NET</h1>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
         <li><a href="merch.html">Merch</a></li>
         <li><a href="contatti.html">Contatti</a></li>
       </ul>
@@ -65,11 +63,6 @@
         audio.pause();
         btn.textContent = 'Play';
       }
-    }
-
-    function toggleMenu() {
-      const nav = document.getElementById("navLinks");
-      nav.classList.toggle("open");
     }
   </script>
 </body>

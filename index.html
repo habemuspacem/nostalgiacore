@@ -12,6 +12,8 @@
   <header>
     <nav class="nav-bar">
       <h1 class="neon-title">WWW.NOSTALGIACORE.NET</h1>
+      <!-- Frase segreta -->
+      <div id="secret-message" class="hidden">L’ultima stanza si apre a fine Giugno.</div>
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="merch.html">Merch</a></li>
@@ -64,6 +66,20 @@
         btn.textContent = 'Play';
       }
     }
+
+    // Mostra la frase segreta dopo 8 secondi
+    document.addEventListener("DOMContentLoaded", function () {
+      const secret = document.getElementById("secret-message");
+      setTimeout(() => {
+        secret.classList.remove("hidden");
+        secret.classList.add("reveal");
+      }, 8000);
+
+      // Tap per nascondere
+      secret.addEventListener("click", () => {
+        secret.style.display = "none";
+      });
+    });
   </script>
 
 </body>

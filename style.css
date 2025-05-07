@@ -1,87 +1,87 @@
-/* Background principale - gradiente pastello */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
 body {
-  background: linear-gradient(135deg, #A7C7E7, #FFDAE8);
-  color: #333;
-  font-family: 'Rubik Wet Paint', sans-serif;
+  background: linear-gradient(135deg, #cfd9df, #e2ebf0);
+  color: #222;
+  font-family: 'Press Start 2P', monospace;
   margin: 0;
   padding: 0;
   transition: background 0.5s ease;
 }
 
-/* Header - Titolo con un font più morbido e luminoso */
 h1.neon-title {
-  font-family: 'Permanent Marker', cursive;
-  color: #FF8A80; /* Colore più morbido */
-  font-size: 3rem;
+  font-family: 'Press Start 2P', monospace;
+  color: #222;
+  font-size: 1.2rem;
   text-align: center;
-  margin: 20px 0;
-  text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 30px 0;
+  text-shadow: 2px 2px #aaa;
+  letter-spacing: 2px;
 }
 
-/* Stile per i bottoni di Play/Pause */
-button {
-  background-color: #FF8A80;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-button:hover {
-  background-color: #FF6F61;  /* Colore più intenso al passaggio del mouse */
-  transform: scale(1.1);
-}
-
-/* Sezione delle tracce */
 .track {
-  margin: 20px auto;
+  margin: 30px auto;
+  padding: 20px;
+  width: 90%;
+  max-width: 400px;
+  background: #f2f2f2;
+  border-radius: 15px;
+  box-shadow:
+    0 8px 12px rgba(0, 0, 0, 0.2),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.track.active-track {
+  transform: translateY(-4px);
+  box-shadow:
+    0 12px 18px rgba(0, 0, 0, 0.3),
+    inset 0 -4px 8px rgba(0, 0, 0, 0.15);
+  border: 2px solid #555;
 }
 
 .track img {
   width: 100%;
   max-width: 300px;
   border-radius: 10px;
-  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
   transition: transform 0.3s ease;
 }
 
 .track:hover img {
+  transform: scale(1.03);
+}
+
+button {
+  background-color: #222;
+  color: #f2f2f2;
+  font-family: 'Press Start 2P', monospace;
+  border: none;
+  padding: 10px 20px;
+  font-size: 0.7rem;
+  border-radius: 5px;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background-color: #444;
   transform: scale(1.05);
 }
 
-/* Stile per il "Notte rotta" */
-button.toggle-night {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: #A7C7E7;
-  color: #333;
-  border: none;
-  padding: 10px 15px;
-  font-size: 1rem;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-button.toggle-night:hover {
-  background-color: #FF8A80;
-}
-
-/* Animazioni per il caricamento e l'interazione */
 @keyframes fadeIn {
   0% {
     opacity: 0;
+    transform: translateY(10px);
   }
   100% {
     opacity: 1;
+    transform: translateY(0);
   }
 }
 
-body, h1, .track img, button {
+body, h1, .track, button {
   animation: fadeIn 1s ease-out forwards;
 }

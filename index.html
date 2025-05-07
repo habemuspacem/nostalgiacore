@@ -58,13 +58,19 @@
     // Crea un nodo per panning (stereo)
     const panNode = audioContext.createStereoPanner();
 
+    // Filtro passa-basso per simulare effetto radio/lontananza
+    const lowPassFilter = audioContext.createBiquadFilter();
+    lowPassFilter.type = "lowpass";
+    lowPassFilter.frequency.setValueAtTime(300, audioContext.currentTime); // Frequenza bassa per effetto radio
+
     // Impostiamo il volume basso per l'audio di sottofondo
-    audio6.volume = 0.1; // Volume ridotto
+    audio6.volume = 0.05; // Volume ridotto
 
     // Impostiamo un effetto di panning per simulare un riverbero leggero
     function applySpatialEffect(audioElement) {
       const source = audioContext.createMediaElementSource(audioElement);
-      source.connect(panNode);
+      source.connect(lowPassFilter); // Passa attraverso il filtro
+      lowPassFilter.connect(panNode);
       panNode.connect(audioContext.destination);
 
       // Modifica del pan per simulare l'effetto di lontananza (verso sinistra o destra)
@@ -117,17 +123,12 @@
       });
 
       if (audio.paused) {
+        fadeIn(audio); // Se l'audio è in pausa, applica la dissolvenza in entrata
         audio.play();
         btn.textContent = 'Pause';
-        if (audio === audio6) {
-          fadeIn(audio); // Se l'audio di sottofondo viene ripreso, applica la dissolvenza in entrata
-        }
       } else {
-        audio.pause();
+        fadeOut(audio); // Se l'audio sta suonando, applica la dissolvenza in uscita
         btn.textContent = 'Play';
-        if (audio === audio6) {
-          fadeOut(audio); // Se l'audio di sottofondo viene messo in pausa, applica la dissolvenza in uscita
-        }
       }
 
       // Quando tutti i brani sono in pausa, ripristina l'audio di sottofondo
@@ -138,10 +139,6 @@
     }
 
   </script>
-
-  <button class="toggle-night" onclick="document.body.classList.toggle('broken-night')">
-    Notte rotta
-  </button>
 
 </body>
 </html>

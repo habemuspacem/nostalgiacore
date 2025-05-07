@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 body {
-  background: linear-gradient(135deg, #cfd9df, #e2ebf0);
+  background: linear-gradient(135deg, #a3d8f4, #6ca0d7); /* Gradiente azzurro più profondo */
   color: #222;
   font-family: 'Press Start 2P', monospace;
   margin: 0;
@@ -15,8 +15,21 @@ h1.neon-title {
   font-size: 1.2rem;
   text-align: center;
   margin: 30px 0;
-  text-shadow: 2px 2px #aaa;
+  text-shadow: 0 0 10px #4ac6e1, 0 0 20px #4ac6e1, 0 0 30px #4ac6e1; /* Effetto neon */
   letter-spacing: 2px;
+  animation: neon-flicker 1.5s infinite alternate;
+}
+
+@keyframes neon-flicker {
+  0% {
+    text-shadow: 0 0 5px #4ac6e1, 0 0 10px #4ac6e1, 0 0 15px #4ac6e1;
+  }
+  50% {
+    text-shadow: 0 0 10px #4ac6e1, 0 0 20px #4ac6e1, 0 0 25px #4ac6e1;
+  }
+  100% {
+    text-shadow: 0 0 5px #4ac6e1, 0 0 15px #4ac6e1, 0 0 30px #4ac6e1;
+  }
 }
 
 .track {
@@ -27,17 +40,17 @@ h1.neon-title {
   background: #f2f2f2;
   border-radius: 15px;
   box-shadow:
-    0 8px 12px rgba(0, 0, 0, 0.2),
-    inset 0 -4px 8px rgba(0, 0, 0, 0.1);
+    0 12px 20px rgba(0, 0, 0, 0.25),  /* Ombra principale più forte */
+    inset 0 -4px 8px rgba(0, 0, 0, 0.15);
   text-align: center;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .track.active-track {
-  transform: translateY(-4px);
+  transform: translateY(-6px);  /* Più spostamento per un effetto di sollevamento maggiore */
   box-shadow:
-    0 12px 18px rgba(0, 0, 0, 0.3),
-    inset 0 -4px 8px rgba(0, 0, 0, 0.15);
+    0 18px 30px rgba(0, 0, 0, 0.35),  /* Ombra più intensa */
+    inset 0 -4px 8px rgba(0, 0, 0, 0.1);
   border: 2px solid #555;
 }
 
@@ -45,12 +58,13 @@ h1.neon-title {
   width: 100%;
   max-width: 300px;
   border-radius: 10px;
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
-  transition: transform 0.3s ease;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25); /* Ombra più forte */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .track:hover img {
   transform: scale(1.03);
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.3); /* Ombra più pronunciata durante hover */
 }
 
 button {
@@ -58,17 +72,24 @@ button {
   color: #f2f2f2;
   font-family: 'Press Start 2P', monospace;
   border: none;
-  padding: 10px 20px;
-  font-size: 0.7rem;
-  border-radius: 5px;
+  padding: 12px 25px;
+  font-size: 0.8rem;
+  border-radius: 8px; /* Raggio più grande per un aspetto più arrotondato */
   margin-top: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Ombra più forte */
 }
 
 button:hover {
   background-color: #444;
-  transform: scale(1.05);
+  transform: scale(1.05) translateY(-3px); /* Aggiungi un piccolo spostamento verso l'alto */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.35); /* Ombra più intensa */
+}
+
+button:active {
+  transform: scale(1) translateY(2px);  /* "Effetto clic" che schiaccia il bottone */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25); /* Ombra più leggera quando cliccato */
 }
 
 @keyframes fadeIn {

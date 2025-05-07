@@ -6,6 +6,76 @@
   <title>Nostalgiacore</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Press Start 2P', cursive;
+      background-color: #111;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .neon-title {
+      font-size: 40px;
+      color: #39ff14;
+      text-shadow: 0 0 5px #39ff14, 0 0 10px #39ff14, 0 0 15px #39ff14;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .track {
+      margin: 20px 0;
+      text-align: center;
+    }
+
+    .track img {
+      max-width: 100px;
+      margin-bottom: 10px;
+    }
+
+    button {
+      background-color: #39ff14;
+      border: none;
+      padding: 10px 20px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 10px;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #28a745;
+    }
+
+    .active-track {
+      border: 2px solid #39ff14;
+    }
+
+    .confirmation-btn {
+      margin-top: 30px;
+      padding: 15px 30px;
+      background-color: #ff5733;
+      font-size: 18px;
+      border: none;
+      color: white;
+      cursor: pointer;
+      border-radius: 10px;
+    }
+
+    .confirmation-btn:hover {
+      background-color: #e14a22;
+    }
+  </style>
 </head>
 <body>
 
@@ -43,6 +113,9 @@
       <audio id="audio5" src="audio/ORECCHINI_snippet.mp3"></audio>
       <button onclick="togglePlay('audio5', 'track5', this)">Play/Pause</button>
     </section>
+
+    <!-- Pulsante di conferma -->
+    <button class="confirmation-btn" onclick="confirmAction()">Conferma</button>
   </main>
 
   <audio id="audio6" src="audio/Nostalgiacore.mp3" loop></audio>
@@ -128,6 +201,11 @@
         fadeIn(audio6, 0.05, 1000);
         btn.textContent = 'Play';
       }
+    }
+
+    // Funzione di conferma
+    function confirmAction() {
+      alert('Conferma avvenuta!');
     }
   </script>
 

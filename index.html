@@ -114,7 +114,6 @@
       <button onclick="togglePlay('audio5', 'track5', this)">Play/Pause</button>
     </section>
 
-    <!-- Pulsante di conferma -->
     <button class="confirmation-btn" onclick="confirmAction()">Conferma</button>
   </main>
 
@@ -163,15 +162,16 @@
       }, 100);
     }
 
-    // Aggiunta: avvia l'audio di sottofondo al primo clic dell'utente
-    let isAudio6Playing = false;
+    // Audio di sottofondo: parte una sola volta al primo clic
+    let isAudio6Started = false;
 
     document.addEventListener("DOMContentLoaded", function () {
-      document.body.addEventListener('click', function() {
-        if (!isAudio6Playing) {
+      document.body.addEventListener('click', function startAudio6Once() {
+        if (!isAudio6Started) {
+          isAudio6Started = true;
           fadeIn(audio6, 0.05, 2000);
           applySpatialEffect(audio6);
-          isAudio6Playing = true;
+          document.body.removeEventListener('click', startAudio6Once);
         }
       });
     });
@@ -180,41 +180,42 @@
       const selectedAudio = document.getElementById(audioId);
       const selectedTrack = document.getElementById(trackId);
 
-      // Rimuovere la classe "active-track" da tutte le tracce
+      // Rimuove classe "active" da tutte le tracce
       document.querySelectorAll('.track').forEach(t => {
         t.classList.remove('active-track');
       });
 
-      // Interrompere tutte le tracce che stanno suonando
+      // Ferma tutte le tracce eccetto quella selezionata e audio6
       const allTracks = document.querySelectorAll('audio');
       allTracks.forEach(audio => {
-        if (audio !== selectedAudio && audio !== audio6 && !audio.paused) {
+        if (audio !== selectedAudio && audio !== audio6) {
           audio.pause();
-          audio.currentTime = 0; // Imposta la traccia all'inizio
+          audio.currentTime = 0;
         }
       });
 
-      // Riprodurre o fermare la traccia selezionata
       if (selectedAudio.paused) {
         fadeIn(selectedAudio, 0.2, 1000);
         selectedAudio.play();
         btn.textContent = 'Pause';
         selectedTrack.classList.add('active-track');
+
+        // Ferma l'audio di sottofondo se sta suonando
+        if (!audio6.paused) {
+          fadeOut(audio6, 1000);
+        }
       } else {
         selectedAudio.pause();
         selectedAudio.currentTime = 0;
         btn.textContent = 'Play';
-      }
 
-      // Gestire l'audio di sottofondo
-      if (selectedAudio.paused) {
-        fadeIn(audio6, 0.05, 1000); // Dissolvenza in entrata solo per l'audio di sottofondo
-      } else {
-        fadeOut(audio6, 1000); // Dissolvenza in uscita solo per l'audio di sottofondo
+        // Riparte l'audio di sottofondo se è stato stoppato
+        if (isAudio6Started && audio6.paused) {
+          fadeIn(audio6, 0.05, 1000);
+        }
       }
     }
 
-    // Funzione di conferma
     function confirmAction() {
       alert('Conferma avvenuta!');
     }

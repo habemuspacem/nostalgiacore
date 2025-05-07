@@ -1,87 +1,127 @@
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nostalgiacore</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+</head>
+<body>
 
-body {
-  background: linear-gradient(135deg, #cfd9df, #e2ebf0);
-  color: #222;
-  font-family: 'Press Start 2P', monospace;
-  margin: 0;
-  padding: 0;
-  transition: background 0.5s ease;
-}
+  <header>
+    <h1 class="neon-title">WWW.NOSTALGIACORE.NET</h1>
+  </header>
 
-h1.neon-title {
-  font-family: 'Press Start 2P', monospace;
-  color: #222;
-  font-size: 1.2rem;
-  text-align: center;
-  margin: 30px 0;
-  text-shadow: 2px 2px #aaa;
-  letter-spacing: 2px;
-}
+  <main>
+    <section class="track" id="track1">
+      <img src="images/Antartide.PNG.PNG" alt="Antartide">
+      <audio id="audio1" src="audio/ANTARTIDE_snippet.mp3"></audio>
+      <button onclick="togglePlay('audio1', 'track1', this)">Play/Pause</button>
+    </section>
 
-.track {
-  margin: 30px auto;
-  padding: 20px;
-  width: 90%;
-  max-width: 400px;
-  background: #f2f2f2;
-  border-radius: 15px;
-  box-shadow:
-    0 8px 12px rgba(0, 0, 0, 0.2),
-    inset 0 -4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    <section class="track" id="track2">
+      <img src="images/Intro.PNG.PNG" alt="Intro">
+      <audio id="audio2" src="audio/INTRO_snippet.mp3"></audio>
+      <button onclick="togglePlay('audio2', 'track2', this)">Play/Pause</button>
+    </section>
 
-.track.active-track {
-  transform: translateY(-4px);
-  box-shadow:
-    0 12px 18px rgba(0, 0, 0, 0.3),
-    inset 0 -4px 8px rgba(0, 0, 0, 0.15);
-  border: 2px solid #555;
-}
+    <section class="track" id="track3">
+      <img src="images/Penombra.PNG.PNG" alt="Penombra">
+      <audio id="audio3" src="audio/PENOMBRA_snippet.mp3"></audio>
+      <button onclick="togglePlay('audio3', 'track3', this)">Play/Pause</button>
+    </section>
 
-.track img {
-  width: 100%;
-  max-width: 300px;
-  border-radius: 10px;
-  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
-  transition: transform 0.3s ease;
-}
+    <section class="track" id="track4">
+      <img src="images/Guai.PNG.PNG" alt="Guai">
+      <audio id="audio4" src="audio/GUAI_snippet.mp3"></audio>
+      <button onclick="togglePlay('audio4', 'track4', this)">Play/Pause</button>
+    </section>
 
-.track:hover img {
-  transform: scale(1.03);
-}
+    <section class="track" id="track5">
+      <img src="images/Orecchini.PNG.PNG" alt="Orecchini">
+      <audio id="audio5" src="audio/ORECCHINI_snippet.mp3"></audio>
+      <button onclick="togglePlay('audio5', 'track5', this)">Play/Pause</button>
+    </section>
+  </main>
 
-button {
-  background-color: #222;
-  color: #f2f2f2;
-  font-family: 'Press Start 2P', monospace;
-  border: none;
-  padding: 10px 20px;
-  font-size: 0.7rem;
-  border-radius: 5px;
-  margin-top: 10px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
+  <audio id="audio6" src="audio/Nostalgiacore.mp3" loop></audio>
 
-button:hover {
-  background-color: #444;
-  transform: scale(1.05);
-}
+  <script>
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const audio6 = document.getElementById('audio6');
+    const panNode = audioContext.createStereoPanner();
+    const lowPassFilter = audioContext.createBiquadFilter();
+    lowPassFilter.type = "lowpass";
+    lowPassFilter.frequency.setValueAtTime(300, audioContext.currentTime);
+    audio6.volume = 0.05;
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+    function applySpatialEffect(audioElement) {
+      const source = audioContext.createMediaElementSource(audioElement);
+      source.connect(lowPassFilter);
+      lowPassFilter.connect(panNode);
+      panNode.connect(audioContext.destination);
+      panNode.pan.setValueAtTime(0.5, audioContext.currentTime);
+      audioElement.play();
+    }
 
-body, h1, .track, button {
-  animation: fadeIn 1s ease-out forwards;
-}
+    function fadeIn(audio) {
+      let volume = 0;
+      audio.volume = volume;
+      audio.play();
+      const interval = setInterval(() => {
+        if (volume < 0.2) {
+          volume += 0.02;
+          audio.volume = volume;
+        } else {
+          clearInterval(interval);
+        }
+      }, 100);
+    }
+
+    function fadeOut(audio) {
+      let volume = audio.volume;
+      const interval = setInterval(() => {
+        if (volume > 0) {
+          volume -= 0.02;
+          audio.volume = volume;
+        } else {
+          clearInterval(interval);
+          audio.pause();
+        }
+      }, 100);
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      fadeIn(audio6);
+      applySpatialEffect(audio6);
+    });
+
+    function togglePlay(audioId, trackId, btn) {
+      const audio = document.getElementById(audioId);
+      const track = document.getElementById(trackId);
+
+      document.querySelectorAll('audio').forEach(a => {
+        if (a !== audio && a !== audio6) a.pause();
+      });
+
+      document.querySelectorAll('.track').forEach(t => {
+        t.classList.remove('active-track');
+      });
+
+      if (audio.paused) {
+        fadeIn(audio);
+        btn.textContent = 'Pause';
+        track.classList.add('active-track');
+        fadeOut(audio6);
+      } else {
+        fadeOut(audio);
+        btn.textContent = 'Play';
+        track.classList.remove('active-track');
+        fadeIn(audio6);
+      }
+    }
+  </script>
+
+</body>
+</html>

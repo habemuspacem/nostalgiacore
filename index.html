@@ -65,60 +65,60 @@
       audioElement.play();
     }
 
-    function fadeIn(audio) {
-      let volume = 0;
-      audio.volume = volume;
+    function fadeIn(audio, targetVolume = 0.2, duration = 2000) {
+      let step = targetVolume / (duration / 100);
+      audio.volume = 0;
       audio.play();
-      const interval = setInterval(() => {
-        if (volume < 0.2) {
-          volume += 0.02;
-          audio.volume = volume;
+      const fadeInInterval = setInterval(() => {
+        if (audio.volume < targetVolume) {
+          audio.volume = Math.min(audio.volume + step, targetVolume);
         } else {
-          clearInterval(interval);
+          clearInterval(fadeInInterval);
         }
       }, 100);
     }
 
-    function fadeOut(audio) {
-      let volume = audio.volume;
-      const interval = setInterval(() => {
-        if (volume > 0) {
-          volume -= 0.02;
-          audio.volume = volume;
+    function fadeOut(audio, duration = 2000) {
+      let step = audio.volume / (duration / 100);
+      const fadeOutInterval = setInterval(() => {
+        if (audio.volume > 0) {
+          audio.volume = Math.max(audio.volume - step, 0);
         } else {
-          clearInterval(interval);
+          clearInterval(fadeOutInterval);
           audio.pause();
         }
       }, 100);
     }
 
     document.addEventListener("DOMContentLoaded", function () {
-      fadeIn(audio6);
+      fadeIn(audio6, 0.05, 2000);
       applySpatialEffect(audio6);
     });
 
     function togglePlay(audioId, trackId, btn) {
-      const audio = document.getElementById(audioId);
-      const track = document.getElementById(trackId);
-
-      document.querySelectorAll('audio').forEach(a => {
-        if (a !== audio && a !== audio6) a.pause();
-      });
+      const selectedAudio = document.getElementById(audioId);
+      const selectedTrack = document.getElementById(trackId);
 
       document.querySelectorAll('.track').forEach(t => {
         t.classList.remove('active-track');
       });
 
-      if (audio.paused) {
-        fadeIn(audio);
+      const allTracks = document.querySelectorAll('audio');
+      allTracks.forEach(audio => {
+        if (audio !== selectedAudio && audio !== audio6 && !audio.paused) {
+          fadeOut(audio, 1000);
+        }
+      });
+
+      if (selectedAudio.paused) {
+        fadeOut(audio6, 1000);
+        fadeIn(selectedAudio, 0.2, 1000);
         btn.textContent = 'Pause';
-        track.classList.add('active-track');
-        fadeOut(audio6);
+        selectedTrack.classList.add('active-track');
       } else {
-        fadeOut(audio);
+        fadeOut(selectedAudio, 1000);
+        fadeIn(audio6, 0.05, 1000);
         btn.textContent = 'Play';
-        track.classList.remove('active-track');
-        fadeIn(audio6);
       }
     }
   </script>

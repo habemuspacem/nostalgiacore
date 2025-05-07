@@ -162,19 +162,21 @@
       }, 100);
     }
 
-    // Audio di sottofondo: parte una sola volta al primo clic
-    let isAudio6Started = false;
+    // Funzione per controllare se tutte le canzoni sono in pausa
+    function areAllTracksPaused() {
+      const allTracks = document.querySelectorAll('audio');
+      return Array.from(allTracks).every(audio => audio.paused || audio === audio6);
+    }
 
-    document.addEventListener("DOMContentLoaded", function () {
-      document.body.addEventListener('click', function startAudio6Once() {
-        if (!isAudio6Started) {
-          isAudio6Started = true;
-          fadeIn(audio6, 0.05, 2000);
-          applySpatialEffect(audio6);
-          document.body.removeEventListener('click', startAudio6Once);
-        }
-      });
-    });
+    // Audio di sottofondo: parte solo se tutte le tracce sono in pausa
+    function manageBackgroundAudio() {
+      if (areAllTracksPaused() && audio6.paused) {
+        fadeIn(audio6, 0.05, 2000); // Avvia l'audio di sottofondo con fade-in
+        applySpatialEffect(audio6);  // Aggiungi l'effetto spaziale
+      } else if (!areAllTracksPaused() && !audio6.paused) {
+        fadeOut(audio6, 1000); // Ferma l'audio di sottofondo se una traccia è in riproduzione
+      }
+    }
 
     function togglePlay(audioId, trackId, btn) {
       const selectedAudio = document.getElementById(audioId);
@@ -200,26 +202,26 @@
         btn.textContent = 'Pause';
         selectedTrack.classList.add('active-track');
 
-        // Ferma l'audio di sottofondo se sta suonando
-        if (!audio6.paused) {
-          fadeOut(audio6, 1000);
-        }
+        // Ferma l'audio di sottofondo
+        fadeOut(audio6, 1000);
       } else {
         selectedAudio.pause();
         selectedAudio.currentTime = 0;
         btn.textContent = 'Play';
 
-        // Riparte l'audio di sottofondo se tutti i brani sono in pausa
-        const allPaused = Array.from(allTracks).every(audio => audio.paused || audio === audio6);
-        if (isAudio6Started && audio6.paused && allPaused) {
-          fadeIn(audio6, 0.05, 1000);
-        }
+        // Avvia l'audio di sottofondo se tutte le tracce sono in pausa
+        manageBackgroundAudio();
       }
     }
 
     function confirmAction() {
       alert('Conferma avvenuta!');
     }
+
+    // Avvia l'audio di sottofondo quando la pagina è pronta, se tutte le tracce sono in pausa
+    document.addEventListener('DOMContentLoaded', () => {
+      manageBackgroundAudio();
+    });
   </script>
 
 </body>

@@ -180,26 +180,37 @@
       const selectedAudio = document.getElementById(audioId);
       const selectedTrack = document.getElementById(trackId);
 
+      // Rimuovere la classe "active-track" da tutte le tracce
       document.querySelectorAll('.track').forEach(t => {
         t.classList.remove('active-track');
       });
 
+      // Interrompere tutte le tracce che stanno suonando
       const allTracks = document.querySelectorAll('audio');
       allTracks.forEach(audio => {
         if (audio !== selectedAudio && audio !== audio6 && !audio.paused) {
-          fadeOut(audio, 1000);
+          audio.pause();
+          audio.currentTime = 0; // Imposta la traccia all'inizio
         }
       });
 
+      // Riprodurre o fermare la traccia selezionata
       if (selectedAudio.paused) {
-        fadeOut(audio6, 1000);
         fadeIn(selectedAudio, 0.2, 1000);
+        selectedAudio.play();
         btn.textContent = 'Pause';
         selectedTrack.classList.add('active-track');
       } else {
-        fadeOut(selectedAudio, 1000);
-        fadeIn(audio6, 0.05, 1000);
+        selectedAudio.pause();
+        selectedAudio.currentTime = 0;
         btn.textContent = 'Play';
+      }
+
+      // Gestire l'audio di sottofondo
+      if (selectedAudio.paused) {
+        fadeIn(audio6, 0.05, 1000); // Dissolvenza in entrata solo per l'audio di sottofondo
+      } else {
+        fadeOut(audio6, 1000); // Dissolvenza in uscita solo per l'audio di sottofondo
       }
     }
 

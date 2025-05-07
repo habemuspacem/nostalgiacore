@@ -50,9 +50,68 @@
   <audio id="audio6" src="audio/NOSTALGIACORE.mp3" loop></audio>
 
   <script>
+    // Setup per l'effetto spazializzazione
+    const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    const audio6 = document.getElementById('audio6');
+    let fadingIn = false;
+
+    // Crea un nodo per panning (stereo)
+    const panNode = audioContext.createStereoPanner();
+
+    // Impostiamo il volume basso per l'audio di sottofondo
+    audio6.volume = 0.1; // Volume ridotto
+
+    // Impostiamo un effetto di panning per simulare un riverbero leggero
+    function applySpatialEffect(audioElement) {
+      const source = audioContext.createMediaElementSource(audioElement);
+      source.connect(panNode);
+      panNode.connect(audioContext.destination);
+
+      // Modifica del pan per simulare l'effetto di lontananza (verso sinistra o destra)
+      panNode.pan.setValueAtTime(0.5, audioContext.currentTime);  // Audio leggermente spostato verso il centro
+
+      audioElement.play();
+    }
+
+    // Funzione per la dissolvenza in entrata
+    function fadeIn(audio) {
+      let volume = 0;
+      audio.volume = volume;
+      audio.play();
+
+      const interval = setInterval(() => {
+        if (volume < 0.2) {  // Imposta il volume massimo
+          volume += 0.02;
+          audio.volume = volume;
+        } else {
+          clearInterval(interval);
+        }
+      }, 100);
+    }
+
+    // Funzione per la dissolvenza in uscita
+    function fadeOut(audio) {
+      let volume = audio.volume;
+      const interval = setInterval(() => {
+        if (volume > 0) {
+          volume -= 0.02;
+          audio.volume = volume;
+        } else {
+          clearInterval(interval);
+          audio.pause(); // Ferma l'audio
+        }
+      }, 100);
+    }
+
+    // Inizializza audio di sottofondo con dissolvenza in entrata
+    document.addEventListener("DOMContentLoaded", function () {
+      fadeIn(audio6); // Avvia la dissolvenza in entrata dell'audio di sottofondo
+      applySpatialEffect(audio6); // Applica l'effetto di spazializzazione all'audio
+    });
+
     function togglePlay(audioId, btn) {
       const audio = document.getElementById(audioId);
-      const audio6 = document.getElementById('audio6'); // Audio di sottofondo
+
       document.querySelectorAll('audio').forEach(a => {
         if (a !== audio && a !== audio6) a.pause();  // Metti in pausa tutti tranne il brano selezionato e il sottofondo
       });
@@ -60,26 +119,29 @@
       if (audio.paused) {
         audio.play();
         btn.textContent = 'Pause';
+        if (audio === audio6) {
+          fadeIn(audio); // Se l'audio di sottofondo viene ripreso, applica la dissolvenza in entrata
+        }
       } else {
         audio.pause();
         btn.textContent = 'Play';
+        if (audio === audio6) {
+          fadeOut(audio); // Se l'audio di sottofondo viene messo in pausa, applica la dissolvenza in uscita
+        }
       }
 
-      // Riprende automaticamente l'audio di sottofondo se è stato messo in pausa
-      if (audio.paused && audio !== audio6) {
-        audio6.play();
+      // Quando tutti i brani sono in pausa, ripristina l'audio di sottofondo
+      const allPaused = Array.from(document.querySelectorAll('audio')).every(a => a.paused);
+      if (allPaused && audio !== audio6) {
+        fadeIn(audio6);  // Riprende l'audio di sottofondo
       }
     }
 
-    document.addEventListener("DOMContentLoaded", function () {
-      const audio6 = document.getElementById('audio6');
-      audio6.play(); // Avvia l'audio di sottofondo quando la pagina è caricata
-    });
   </script>
-  
+
   <button class="toggle-night" onclick="document.body.classList.toggle('broken-night')">
     Notte rotta
   </button>
-  
+
 </body>
 </html>

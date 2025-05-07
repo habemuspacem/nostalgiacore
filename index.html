@@ -65,7 +65,6 @@
       audioElement.play();
     }
 
-    // Modifica della dissolvenza in entrata
     function fadeIn(audio, targetVolume = 0.2, duration = 2000) {
       let step = targetVolume / (duration / 100);
       audio.volume = 0;
@@ -79,15 +78,29 @@
       }, 100);
     }
 
-    // Funzione modificata per fermare l'audio senza dissolvenza
-    function stopAudio(audio) {
-      audio.pause();
-      audio.currentTime = 0;  // Riavvolge l'audio alla posizione iniziale
+    function fadeOut(audio, duration = 2000) {
+      let step = audio.volume / (duration / 100);
+      const fadeOutInterval = setInterval(() => {
+        if (audio.volume > 0) {
+          audio.volume = Math.max(audio.volume - step, 0);
+        } else {
+          clearInterval(fadeOutInterval);
+          audio.pause();
+        }
+      }, 100);
     }
 
+    // Aggiunta: avvia l'audio di sottofondo al primo clic dell'utente
+    let isAudio6Playing = false;
+
     document.addEventListener("DOMContentLoaded", function () {
-      fadeIn(audio6, 0.05, 2000);
-      applySpatialEffect(audio6);
+      document.body.addEventListener('click', function() {
+        if (!isAudio6Playing) {
+          fadeIn(audio6, 0.05, 2000);
+          applySpatialEffect(audio6);
+          isAudio6Playing = true;
+        }
+      });
     });
 
     function togglePlay(audioId, trackId, btn) {
@@ -101,18 +114,18 @@
       const allTracks = document.querySelectorAll('audio');
       allTracks.forEach(audio => {
         if (audio !== selectedAudio && audio !== audio6 && !audio.paused) {
-          stopAudio(audio); // Rimuoviamo la dissolvenza, fermiamo semplicemente l'audio
+          fadeOut(audio, 1000);
         }
       });
 
       if (selectedAudio.paused) {
-        stopAudio(audio6); // Fermiamo l'audio di sottofondo senza dissolvenza
-        fadeIn(selectedAudio, 0.2, 1000); // Dissolvenza in entrata solo per il brano selezionato
+        fadeOut(audio6, 1000);
+        fadeIn(selectedAudio, 0.2, 1000);
         btn.textContent = 'Pause';
         selectedTrack.classList.add('active-track');
       } else {
-        stopAudio(selectedAudio); // Fermiamo il brano senza dissolvenza
-        fadeIn(audio6, 0.05, 1000); // Dissolvenza in entrata per il brano di sottofondo
+        fadeOut(selectedAudio, 1000);
+        fadeIn(audio6, 0.05, 1000);
         btn.textContent = 'Play';
       }
     }

@@ -1,162 +1,87 @@
-/* --- FONT & BASE --- */
-@import url('https://fonts.googleapis.com/css2?family=Rubik+Wet+Paint&family=Rock+Salt&display=swap');
-
+/* Background principale - gradiente pastello */
 body {
+  background: linear-gradient(135deg, #A7C7E7, #FFDAE8);
+  color: #333;
+  font-family: 'Rubik Wet Paint', sans-serif;
   margin: 0;
-  font-family: 'Rock Salt', cursive;
-  background: linear-gradient(180deg, #0d0d0d, #111);
-  color: #fff;
-  overflow-x: hidden;
-  transition: background 0.5s ease-in-out;
+  padding: 0;
+  transition: background 0.5s ease;
 }
 
-/* --- HEADER --- */
-header {
-  background-color: #000;
-  padding: 30px 10px 20px;
+/* Header - Titolo con un font più morbido e luminoso */
+h1.neon-title {
+  font-family: 'Permanent Marker', cursive;
+  color: #FF8A80; /* Colore più morbido */
+  font-size: 3rem;
   text-align: center;
+  margin: 20px 0;
+  text-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.neon-title {
-  font-family: 'Rubik Wet Paint', cursive;
-  font-size: 1.8rem;
-  color: #0ff;
-  text-shadow: 0 0 4px #0ff, 0 0 8px #0ff, 0 0 14px #0ff;
-  animation: flicker 3s infinite;
-  margin-bottom: 10px;
-  word-break: break-word;
-}
-
-/* --- MODALITÀ NOTTE ROTTA --- */
-body.broken-night {
-  background: #0a0a0a url('https://www.transparenttextures.com/patterns/noise.png');
-  background-size: cover;
-  filter: contrast(1.1) brightness(0.8);
-}
-
-.toggle-night {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #111;
-  color: #ff40ff;
-  border: 2px solid #ff40ff;
-  padding: 8px 14px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-size: 0.9rem;
-  z-index: 1000;
-  font-family: 'Rock Salt', cursive;
-  text-shadow: 1px 1px 2px #ff00ff;
-}
-
-/* --- SEGRETO --- */
-#secret-message {
-  font-family: 'Rock Salt', cursive;
-  font-size: 1.2rem;
-  color: #ff40ff;
-  opacity: 0;
-  transition: opacity 1.2s ease-in;
-  text-shadow: 1px 1px 2px #ff00ff;
-  margin-bottom: 10px;
-}
-
-#secret-message.reveal {
-  opacity: 1;
-  animation: wobble 2s infinite;
-}
-
-/* --- NAV --- */
-.nav-bar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.nav-links {
-  display: none;
-}
-
-/* --- MAIN TRACK SECTIONS --- */
-main {
-  padding: 30px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-}
-
-.track {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border: 2px solid transparent;
-  padding: 10px;
-  border-radius: 15px;
-  transition: box-shadow 0.3s ease;
-}
-
-.track:hover,
-.track.playing {
-  box-shadow: 0 0 15px 4px #0ff;
-  background-color: rgba(0, 255, 255, 0.05);
-}
-
-/* --- IMMAGINI --- */
-.track img {
-  max-width: 90%;
-  height: auto;
-  border-radius: 15px;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
-  transition: transform 0.3s;
-}
-
-.track img:hover {
-  transform: scale(1.02);
-}
-
-/* --- AUDIO PLAYER BUTTONS --- */
+/* Stile per i bottoni di Play/Pause */
 button {
-  margin-top: 10px;
+  background-color: #FF8A80;
+  color: white;
+  border: none;
   padding: 10px 20px;
-  background: #111;
-  color: #0ff;
-  border: 2px solid #0ff;
-  border-radius: 5px;
-  font-family: 'Rock Salt', cursive;
   font-size: 1rem;
-  text-shadow: 1px 1px 1px #00ffff;
+  border-radius: 5px;
   cursor: pointer;
-  animation: flicker 3s infinite;
+  transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 button:hover {
-  background-color: #0ff;
-  color: #000;
+  background-color: #FF6F61;  /* Colore più intenso al passaggio del mouse */
+  transform: scale(1.1);
 }
 
-/* --- ANIMAZIONI --- */
-@keyframes flicker {
-  0%, 18%, 22%, 25%, 53%, 57%, 100% {
-    text-shadow: 0 0 4px #0ff, 0 0 8px #0ff, 0 0 12px #0ff;
+/* Sezione delle tracce */
+.track {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.track img {
+  width: 100%;
+  max-width: 300px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.track:hover img {
+  transform: scale(1.05);
+}
+
+/* Stile per il "Notte rotta" */
+button.toggle-night {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #A7C7E7;
+  color: #333;
+  border: none;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button.toggle-night:hover {
+  background-color: #FF8A80;
+}
+
+/* Animazioni per il caricamento e l'interazione */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
-  20%, 24%, 55% {
-    text-shadow: none;
+  100% {
+    opacity: 1;
   }
 }
 
-@keyframes wobble {
-  0%, 100% { transform: rotate(-1deg); }
-  50% { transform: rotate(1deg); }
-}
-
-/* --- RESPONSIVE --- */
-@media screen and (max-width: 768px) {
-  .neon-title {
-    font-size: 1.4rem;
-  }
-
-  button {
-    font-size: 0.9rem;
-    padding: 8px 16px;
-  }
+body, h1, .track img, button {
+  animation: fadeIn 1s ease-out forwards;
 }

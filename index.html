@@ -5,88 +5,84 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nostalgiacore</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Rock+Salt&family=Rubik+Wet+Paint&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
 
   <header>
-    <h1 class="neon-title">WWW.NOSTALGIACORE.NET</h1>
+    <h1 class="retro-title">WWW.NOSTALGIACORE.NET</h1>
   </header>
 
   <main>
-    <section class="track">
-      <img src="images/Antartide.PNG.PNG" alt="Antartide">
-      <audio id="audio1" src="audio/ANTARTIDE_snippet.mp3"></audio>
-      <button onclick="togglePlay('audio1', this)">Play/Pause</button>
+    <section class="track" data-track="1">
+      <div class="track-box">
+        <img src="images/Antartide.PNG.PNG" alt="Antartide">
+        <audio id="audio1" src="audio/ANTARTIDE_snippet.mp3"></audio>
+        <button onclick="togglePlay('audio1', this)">Play/Pause</button>
+      </div>
     </section>
 
-    <section class="track">
-      <img src="images/Intro.PNG.PNG" alt="Intro">
-      <audio id="audio2" src="audio/INTRO_snippet.mp3"></audio>
-      <button onclick="togglePlay('audio2', this)">Play/Pause</button>
+    <section class="track" data-track="2">
+      <div class="track-box">
+        <img src="images/Intro.PNG.PNG" alt="Intro">
+        <audio id="audio2" src="audio/INTRO_snippet.mp3"></audio>
+        <button onclick="togglePlay('audio2', this)">Play/Pause</button>
+      </div>
     </section>
 
-    <section class="track">
-      <img src="images/Penombra.PNG.PNG" alt="Penombra">
-      <audio id="audio3" src="audio/PENOMBRA_snippet.mp3"></audio>
-      <button onclick="togglePlay('audio3', this)">Play/Pause</button>
+    <section class="track" data-track="3">
+      <div class="track-box">
+        <img src="images/Penombra.PNG.PNG" alt="Penombra">
+        <audio id="audio3" src="audio/PENOMBRA_snippet.mp3"></audio>
+        <button onclick="togglePlay('audio3', this)">Play/Pause</button>
+      </div>
     </section>
 
-    <section class="track">
-      <img src="images/Guai.PNG.PNG" alt="Guai">
-      <audio id="audio4" src="audio/GUAI_snippet.mp3"></audio>
-      <button onclick="togglePlay('audio4', this)">Play/Pause</button>
+    <section class="track" data-track="4">
+      <div class="track-box">
+        <img src="images/Guai.PNG.PNG" alt="Guai">
+        <audio id="audio4" src="audio/GUAI_snippet.mp3"></audio>
+        <button onclick="togglePlay('audio4', this)">Play/Pause</button>
+      </div>
     </section>
 
-    <section class="track">
-      <img src="images/Orecchini.PNG.PNG" alt="Orecchini">
-      <audio id="audio5" src="audio/ORECCHINI_snippet.mp3"></audio>
-      <button onclick="togglePlay('audio5', this)">Play/Pause</button>
+    <section class="track" data-track="5">
+      <div class="track-box">
+        <img src="images/Orecchini.PNG.PNG" alt="Orecchini">
+        <audio id="audio5" src="audio/ORECCHINI_snippet.mp3"></audio>
+        <button onclick="togglePlay('audio5', this)">Play/Pause</button>
+      </div>
     </section>
   </main>
 
-  <!-- Aggiungiamo l'audio di sottofondo -->
+  <!-- Audio di sottofondo -->
   <audio id="audio6" src="audio/Nostalgiacore.mp3" loop></audio>
 
+  <!-- SCRIPT (resta invariato) -->
   <script>
-    // Setup per l'effetto spazializzazione
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     const audio6 = document.getElementById('audio6');
-    let fadingIn = false;
-
-    // Crea un nodo per panning (stereo)
     const panNode = audioContext.createStereoPanner();
-
-    // Filtro passa-basso per simulare effetto radio/lontananza
     const lowPassFilter = audioContext.createBiquadFilter();
     lowPassFilter.type = "lowpass";
-    lowPassFilter.frequency.setValueAtTime(300, audioContext.currentTime); // Frequenza bassa per effetto radio
+    lowPassFilter.frequency.setValueAtTime(300, audioContext.currentTime);
+    audio6.volume = 0.05;
 
-    // Impostiamo il volume basso per l'audio di sottofondo
-    audio6.volume = 0.05; // Volume ridotto
-
-    // Impostiamo un effetto di panning per simulare un riverbero leggero
     function applySpatialEffect(audioElement) {
       const source = audioContext.createMediaElementSource(audioElement);
-      source.connect(lowPassFilter); // Passa attraverso il filtro
+      source.connect(lowPassFilter);
       lowPassFilter.connect(panNode);
       panNode.connect(audioContext.destination);
-
-      // Modifica del pan per simulare l'effetto di lontananza (verso sinistra o destra)
-      panNode.pan.setValueAtTime(0.5, audioContext.currentTime);  // Audio leggermente spostato verso il centro
-
+      panNode.pan.setValueAtTime(0.5, audioContext.currentTime);
       audioElement.play();
     }
 
-    // Funzione per la dissolvenza in entrata
     function fadeIn(audio) {
       let volume = 0;
       audio.volume = volume;
       audio.play();
-
       const interval = setInterval(() => {
-        if (volume < 0.2) {  // Imposta il volume massimo
+        if (volume < 0.2) {
           volume += 0.02;
           audio.volume = volume;
         } else {
@@ -95,7 +91,6 @@
       }, 100);
     }
 
-    // Funzione per la dissolvenza in uscita
     function fadeOut(audio) {
       let volume = audio.volume;
       const interval = setInterval(() => {
@@ -104,40 +99,45 @@
           audio.volume = volume;
         } else {
           clearInterval(interval);
-          audio.pause(); // Ferma l'audio
+          audio.pause();
         }
       }, 100);
     }
 
-    // Inizializza audio di sottofondo con dissolvenza in entrata
     document.addEventListener("DOMContentLoaded", function () {
-      fadeIn(audio6); // Avvia la dissolvenza in entrata dell'audio di sottofondo
-      applySpatialEffect(audio6); // Applica l'effetto di spazializzazione all'audio
+      fadeIn(audio6);
+      applySpatialEffect(audio6);
     });
 
     function togglePlay(audioId, btn) {
       const audio = document.getElementById(audioId);
-
       document.querySelectorAll('audio').forEach(a => {
-        if (a !== audio && a !== audio6) a.pause();  // Metti in pausa tutti tranne il brano selezionato e il sottofondo
+        if (a !== audio && a !== audio6) a.pause();
       });
 
       if (audio.paused) {
-        fadeIn(audio); // Se l'audio è in pausa, applica la dissolvenza in entrata
+        fadeIn(audio);
         audio.play();
         btn.textContent = 'Pause';
+        highlightActiveTrack(audioId);
       } else {
-        fadeOut(audio); // Se l'audio sta suonando, applica la dissolvenza in uscita
+        fadeOut(audio);
         btn.textContent = 'Play';
       }
 
-      // Quando tutti i brani sono in pausa, ripristina l'audio di sottofondo
       const allPaused = Array.from(document.querySelectorAll('audio')).every(a => a.paused);
       if (allPaused && audio !== audio6) {
-        fadeIn(audio6);  // Riprende l'audio di sottofondo
+        fadeIn(audio6);
       }
     }
 
+    function highlightActiveTrack(audioId) {
+      document.querySelectorAll('.track').forEach(track => {
+        track.classList.remove('active-track');
+      });
+      const active = document.getElementById(audioId).closest('.track');
+      if (active) active.classList.add('active-track');
+    }
   </script>
 
 </body>

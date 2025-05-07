@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 body {
-  background: linear-gradient(135deg, #cfd9df, #e2ebf0);
+  background: linear-gradient(135deg, #cfd9df, #d8f0fb); /* Azzurro richiamato dalle stanze */
   color: #222;
   font-family: 'Press Start 2P', monospace;
   margin: 0;
@@ -17,20 +17,20 @@ body {
 
 h1.neon-title {
   font-family: 'Press Start 2P', monospace;
-  color: #222;
-  font-size: 1.2rem;
+  color: #176B87; /* Azzurro scuro per richiamare le stanze */
+  font-size: 1.5rem;
   margin: 30px 0;
-  text-shadow: 2px 2px #aaa;
+  text-shadow: 2px 2px #B4D4FF; /* Lieve effetto neon */
   letter-spacing: 2px;
   display: inline-block;
 }
 
 .track {
   margin: 30px auto;
-  padding: 20px;
+  padding: 25px;
   width: 90%;
-  max-width: 400px;
-  background: #f2f2f2;
+  max-width: 450px;
+  background: linear-gradient(145deg, #e0f4ff, #d1eaf3); /* Azzurro chiaro con profondità */
   border-radius: 15px;
   box-shadow:
     0 8px 12px rgba(0, 0, 0, 0.2),
@@ -40,40 +40,41 @@ h1.neon-title {
 }
 
 .track.active-track {
-  transform: translateY(-4px);
+  transform: translateY(-5px); /* Aggiunto un maggiore rilievo */
   box-shadow:
     0 12px 18px rgba(0, 0, 0, 0.3),
     inset 0 -4px 8px rgba(0, 0, 0, 0.15);
-  border: 2px solid #555;
+  border: 2px solid #176B87; /* Azzurro più intenso per tracce attive */
 }
 
 .track img {
   width: 100%;
-  max-width: 300px;
+  max-width: 320px;
   border-radius: 10px;
   box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.25);
   transition: transform 0.3s ease;
 }
 
 .track:hover img {
-  transform: scale(1.03);
+  transform: scale(1.05); /* Lieve ingrandimento al passaggio del mouse */
 }
 
 button {
-  background-color: #222;
-  color: #f2f2f2;
+  background-color: #176B87; /* Azzurro per il richiamo stilistico */
+  color: #fff;
   font-family: 'Press Start 2P', monospace;
   border: none;
-  padding: 10px 20px;
-  font-size: 0.7rem;
-  border-radius: 5px;
+  padding: 12px 30px;
+  font-size: 0.8rem;
+  border-radius: 8px;
   margin-top: 10px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
-  background-color: #444;
+  background-color: #12888C; /* Azzurro più intenso per il hover */
   transform: scale(1.05);
 }
 
@@ -92,15 +93,19 @@ body, h1, .track, button {
   animation: fadeIn 1s ease-out forwards;
 }
 
-/* Aggiunta per migliorare il centraggio su dispositivi mobili */
+/* Aggiustamenti per il centraggio su dispositivi mobili */
 @media (max-width: 768px) {
   h1.neon-title {
-    font-size: 1rem;
+    font-size: 1.2rem;
     margin: 20px 0;
   }
 
   .track {
     width: 95%;
-    padding: 15px;
+    padding: 20px;
+  }
+
+  button {
+    padding: 10px 25px;
   }
 }

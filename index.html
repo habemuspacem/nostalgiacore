@@ -46,11 +46,15 @@
     </section>
   </main>
 
+  <!-- Aggiungiamo l'audio di sottofondo -->
+  <audio id="audio6" src="audio/NOSTALGIACORE.mp3" loop></audio>
+
   <script>
     function togglePlay(audioId, btn) {
       const audio = document.getElementById(audioId);
+      const audio6 = document.getElementById('audio6'); // Audio di sottofondo
       document.querySelectorAll('audio').forEach(a => {
-        if (a !== audio) a.pause();
+        if (a !== audio && a !== audio6) a.pause();  // Metti in pausa tutti tranne il brano selezionato e il sottofondo
       });
 
       if (audio.paused) {
@@ -60,53 +64,22 @@
         audio.pause();
         btn.textContent = 'Play';
       }
+
+      // Riprende automaticamente l'audio di sottofondo se è stato messo in pausa
+      if (audio.paused && audio !== audio6) {
+        audio6.play();
+      }
     }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const audio6 = document.getElementById('audio6');
+      audio6.play(); // Avvia l'audio di sottofondo quando la pagina è caricata
+    });
   </script>
-<button class="toggle-night" onclick="document.body.classList.toggle('broken-night')">
-  Notte rotta
-</button>
-
-<script>
-  function togglePlay(audioId, btn) {
-    const audio = document.getElementById(audioId);
-    const trackSection = btn.closest('.track');
-
-    document.querySelectorAll('audio').forEach(a => {
-      if (a !== audio) a.pause();
-    });
-
-    document.querySelectorAll('.track').forEach(t => {
-      if (t !== trackSection) t.classList.remove('playing');
-    });
-
-    if (audio.paused) {
-      audio.play();
-      btn.textContent = 'Pause';
-      trackSection.classList.add('playing');
-    } else {
-      audio.pause();
-      btn.textContent = 'Play';
-      trackSection.classList.remove('playing');
-    }
-
-    const secret = document.getElementById("secret-message");
-    if (!secret.classList.contains("reveal")) {
-      secret.classList.remove("hidden");
-      secret.classList.add("reveal");
-    }
-  }
-
-  document.addEventListener("DOMContentLoaded", function () {
-    const secret = document.getElementById("secret-message");
-    setTimeout(() => {
-      secret.classList.remove("hidden");
-      secret.classList.add("reveal");
-    }, 8000);
-
-    secret.addEventListener("click", () => {
-      secret.style.display = "none";
-    });
-  });
-</script>
+  
+  <button class="toggle-night" onclick="document.body.classList.toggle('broken-night')">
+    Notte rotta
+  </button>
+  
 </body>
 </html>
